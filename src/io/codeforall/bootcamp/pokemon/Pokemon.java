@@ -1,5 +1,6 @@
 package io.codeforall.bootcamp.pokemon;
 
+    import org.academiadecodigo.simplegraphics.graphics.Rectangle;
     import org.academiadecodigo.simplegraphics.pictures.Picture;
 //import org.academiadecodigo.simplegraphics.pictures.Picture;
 
@@ -11,18 +12,20 @@ public class Pokemon {
     int currentHP = maxHP;
     private Picture sprite;
     private boolean dead = false;
+    private Rectangle hpBar;
 
 
     public Pokemon(Picture sprite) {
         this.sprite = sprite;
+//        hpBar =  new Rectangle(700,500,currentHP/1.75,35);
 
     }
 
     public boolean isDead() {
         if (currentHP <= 0) {
-           dead = true;
+            dead = true;
             System.out.println("fainted");
-           return true;
+            return true;
 
         }
         return false;
@@ -41,7 +44,7 @@ public class Pokemon {
 //        }
 //    }
 
-    public boolean getDead(){
+    public boolean getDead() {
         return dead;
     }
 
@@ -49,4 +52,15 @@ public class Pokemon {
         return currentHP;
     }
 
+    public void setSprite(Picture sprite) {
+        this.sprite = sprite;
     }
+
+    public void setHpBar(Rectangle hpBar) {
+        this.hpBar = hpBar;
+    }
+
+    public Rectangle getHpBar() {
+        return hpBar;
+    }
+}

@@ -1,5 +1,6 @@
 package io.codeforall.bootcamp.pokemon;
 
+import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
@@ -19,6 +20,11 @@ public class Game {
         p1.getSprite().grow(-20,-20);
         p2.getSprite().draw();
         p2.getSprite().grow(-170,-170);
+
+        Rectangle dragoniteHP = new Rectangle(700 , 500 , 500/1.75 , 35);
+        p1.setHpBar(dragoniteHP);
+        dragoniteHP.fill();
+        dragoniteHP.setColor(Color.GREEN);
     }
 
 

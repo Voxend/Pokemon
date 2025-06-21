@@ -1,5 +1,6 @@
 package io.codeforall.bootcamp.pokemon;
 
+import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
@@ -20,14 +21,15 @@ public class Dragonite extends Pokemon {
         this.wingAttack = 75;
         this.tackle = 30;
 
-        Rectangle dragoniteHP = new Rectangle(700 , 500 , currentHP/1.75 , 35);
-        dragoniteHP.fill();
-        
+
+
+
     }
 
     public void outrage(Pokemon pokemon){
 
          pokemon.currentHP -= outrage;
+         
         System.out.println("Dragonite used Outrage");
 
         System.out.println("Rattata HP: " + pokemon.currentHP);
@@ -66,28 +68,8 @@ public class Dragonite extends Pokemon {
     public void setCurrentTurn(boolean turn){
            this.currentTurn = turn;
     }
-    //    @Override
-//    public void useMove(Pokemon pokemon, Move move){
-//        pokemon.currentHP -= move.damage;
+
+//    public void setHpBar(Rectangle hpBar) {
+//        this.hpBar = hpBar;
 //    }
-
-
-
-//    private enum Mmove {
-//        TACKLE(10,10),
-//        WATERGUN(30,10),
-//        WINGATTACK(20,10),
-//        SLAM(50,5);
-//
-//        private int damage;
-//        private int pp;
-//
-//        Mmove(int damage, int pp){
-//            this.damage = damage;
-//            this.pp = pp;
-//        }
-//
-//
-//    }
-
 }

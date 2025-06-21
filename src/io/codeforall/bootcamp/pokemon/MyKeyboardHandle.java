@@ -84,9 +84,9 @@ public class MyKeyboardHandle implements KeyboardHandler {
 
      int a = dragonite.getCurrentHP();
 
-        Rectangle hp = new Rectangle(700 , 500 , a/1.75 , 35);
-        hp.fill();
-        hp.setColor(Color.GREEN);
+//        Rectangle hp = new Rectangle(700 , 500 , a/1.75 , 35);
+//        hp.fill();
+//        hp.setColor(Color.GREEN);
 
      if (dragonite.getCurrentTurn() && !dragonite.getDead()) {
          if (e.getKey() == KeyboardEvent.KEY_M) {
@@ -130,8 +130,7 @@ public class MyKeyboardHandle implements KeyboardHandler {
              rattata.setCurrentTurn(true);
          }
 
-//         dragonite.setCurrentTurn(false);
-//         rattata.setCurrentTurn(true);
+
      }
         if (rattata.getCurrentTurn() && !rattata.getDead()) {
             if (e.getKey() == KeyboardEvent.KEY_Q) {
@@ -166,11 +165,11 @@ public class MyKeyboardHandle implements KeyboardHandler {
 
             if (e.getKey() == KeyboardEvent.KEY_R) {
                 rattata.surf(dragonite);
-//                hp.delete();
-//                a= dragonite.getCurrentHP();
-//                Rectangle hp2 = new Rectangle(700 , 500 , a/1.75 , 35);
-//                hp2.fill();
-//                hp2.setColor(Color.GREEN);
+
+                dragonite.getHpBar().grow(-250/3.5,0);
+//
+
+
                 if (dragonite.currentHP <= 0) {
                     dragonite.isDead();
 

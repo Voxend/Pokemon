@@ -46,6 +46,7 @@ public class Rattata extends Pokemon{
     public void surf (Pokemon pokemon){
 
         pokemon.currentHP -= surf;
+
         System.out.println("Rattata used Surf");
         System.out.println("Dragonite HP: " + pokemon.currentHP);
     }
@@ -56,5 +57,9 @@ public class Rattata extends Pokemon{
 
     public void setCurrentTurn(boolean turn){
         this.currentTurn = turn;
+    }
+
+    public int getSurf() {
+        return surf;
     }
 }
