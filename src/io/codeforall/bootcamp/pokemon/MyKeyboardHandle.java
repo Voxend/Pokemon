@@ -6,6 +6,7 @@ import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 import javax.sound.sampled.*;
 import java.io.File;
@@ -16,16 +17,15 @@ public class MyKeyboardHandle implements KeyboardHandler {
  private Keyboard keyboard;
  private Dragonite dragonite;
  private Rattata rattata;
+ private Picture startScreen;
+ private Game game;
 
 
  public void init(){
 
-
      keyboard = new Keyboard(this);
 
-
      //P1
-
 
          KeyboardEvent m = new KeyboardEvent();
          m.setKey(KeyboardEvent.KEY_M);
@@ -47,7 +47,6 @@ public class MyKeyboardHandle implements KeyboardHandler {
          v.setKey(KeyboardEvent.KEY_V);
          v.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
          keyboard.addEventListener(v);
-
 
      //P2
 
@@ -71,352 +70,239 @@ public class MyKeyboardHandle implements KeyboardHandler {
      r.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
      keyboard.addEventListener(r);
 
-
-
-
-
-
-
-
-
-
+     KeyboardEvent space = new KeyboardEvent();
+     space.setKey(KeyboardEvent.KEY_SPACE);
+     space.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+     keyboard.addEventListener(space);
 
  }
 
     @Override
+
+
+
     public void keyPressed(KeyboardEvent e) {
-
-     int a = dragonite.getCurrentHP();
-
-//        Rectangle hp = new Rectangle(700 , 500 , a/1.75 , 35);
-//        hp.fill();
-//        hp.setColor(Color.GREEN);
-
-     if (dragonite.getCurrentTurn() && !dragonite.getDead()) {
-         if (e.getKey() == KeyboardEvent.KEY_M) {
-
-             File file = new File(("/Users/codecadet/workspace/Java/Pokemon/resources/hit.wav"));
-             AudioInputStream audioStream = null;
-             try {
-                 audioStream = AudioSystem.getAudioInputStream(file);
-             } catch (UnsupportedAudioFileException ex) {
-                 throw new RuntimeException(ex);
-             } catch (IOException ex) {
-                 throw new RuntimeException(ex);
-             }
-             Clip clip = null;
-             try {
-                 clip = AudioSystem.getClip();
-             } catch (LineUnavailableException ex) {
-                 throw new RuntimeException(ex);
-             }
-             try {
-                 clip.open(audioStream);
-             } catch (LineUnavailableException ex) {
-                 throw new RuntimeException(ex);
-             } catch (IOException ex) {
-                 throw new RuntimeException(ex);
-             }
-
-             clip.start();
-
-             dragonite.outrage(rattata);
-             rattata.getHpBar().grow(-dragonite.getOutrage() /3.5,0);
-             rattata.getHpBar().translate(-dragonite.getOutrage()/3.5,0);
-
-             if (rattata.currentHP <= 0) {
-                 rattata.isDead();
-
-
-             }
-             dragonite.setCurrentTurn(false);
-             rattata.setCurrentTurn(true);
+     if (!game.isStarted()) {
+         if (e.getKey() == KeyboardEvent.KEY_SPACE) {
+             startScreen.delete();
+             game.setStarted(true);
          }
+     }else {
 
-         if (e.getKey() == KeyboardEvent.KEY_N) {
+         if ((dragonite.getCurrentTurn() && !dragonite.getDead())) {
+             if (e.getKey() == KeyboardEvent.KEY_M) {
 
-             File file = new File(("/Users/codecadet/workspace/Java/Pokemon/resources/hit.wav"));
-             AudioInputStream audioStream = null;
-             try {
-                 audioStream = AudioSystem.getAudioInputStream(file);
-             } catch (UnsupportedAudioFileException ex) {
-                 throw new RuntimeException(ex);
-             } catch (IOException ex) {
-                 throw new RuntimeException(ex);
+                 soundFX();
+
+                 dragonite.outrage(rattata);
+                 rattata.getHpBar().grow(-dragonite.getOutrage() / 3.5, 0);
+                 rattata.getHpBar().translate(-dragonite.getOutrage() / 3.5, 0);
+                 dragoniteMove();
+                 rattata.getCurrentHpText().setText("" + rattata.currentHP);
+                 game.getAttackText().setText("Dragonite used Outrage!");
+
+
+
+                 if (rattata.currentHP <= 0) {
+                     rattata.isDead();
+                     ratIsDead();
+
+                 }
+                 dragonite.setCurrentTurn(false);
+                 rattata.setCurrentTurn(true);
              }
-             Clip clip = null;
-             try {
-                 clip = AudioSystem.getClip();
-             } catch (LineUnavailableException ex) {
-                 throw new RuntimeException(ex);
+
+             if (e.getKey() == KeyboardEvent.KEY_N) {
+
+                 soundFX();
+
+                 dragonite.hurricane(rattata);
+
+                 rattata.getHpBar().grow(-dragonite.getHurricane() / 3.5, 0);
+                 rattata.getHpBar().translate(-dragonite.getHurricane() / 3.5, 0);
+                 dragoniteMove();
+                 rattata.getCurrentHpText().setText("" + rattata.currentHP);
+                 game.getAttackText().setText("Dragonite used Hurricane!");
+
+
+                 if (rattata.currentHP <= 0) {
+                     rattata.isDead();
+                     ratIsDead();
+
+                 }
+
+                 dragonite.setCurrentTurn(false);
+                 rattata.setCurrentTurn(true);
+
              }
-             try {
-                 clip.open(audioStream);
-             } catch (LineUnavailableException ex) {
-                 throw new RuntimeException(ex);
-             } catch (IOException ex) {
-                 throw new RuntimeException(ex);
+
+             if (e.getKey() == KeyboardEvent.KEY_B) {
+
+                 soundFX();
+
+                 dragonite.wingAttack(rattata);
+
+                 rattata.getHpBar().grow(-dragonite.getWingAttack() / 3.5, 0);
+                 rattata.getHpBar().translate(-dragonite.getWingAttack() / 3.5, 0);
+                 dragoniteMove();
+                 rattata.getCurrentHpText().setText("" + rattata.currentHP);
+                 game.getAttackText().setText("Dragonite used Wing attack!");
+
+
+                 if (rattata.currentHP <= 0) {
+                     rattata.isDead();
+                     ratIsDead();
+
+                 }
+
+                 dragonite.setCurrentTurn(false);
+                 rattata.setCurrentTurn(true);
              }
 
-             clip.start();
+             if (e.getKey() == KeyboardEvent.KEY_V) {
 
-             dragonite.hurricane(rattata);
+                 soundFX();
 
-             rattata.getHpBar().grow(-dragonite.getHurricane() /3.5,0);
-             rattata.getHpBar().translate(-dragonite.getHurricane()/3.5,0);
-             if (rattata.currentHP <= 0) {
-                 rattata.isDead();
+                 dragonite.tackle(rattata);
 
+                 rattata.getHpBar().grow(-dragonite.getTackle() / 3.5, 0);
+                 rattata.getHpBar().translate(-dragonite.getTackle() / 3.5, 0);
+                 dragoniteMove();
+                 rattata.getCurrentHpText().setText("" + rattata.currentHP);
+                 game.getAttackText().setText("Dragonite used Tackle!");
+
+
+                 if (rattata.currentHP <= 0) {
+                     rattata.isDead();
+                     ratIsDead();
+
+                 }
+
+                 dragonite.setCurrentTurn(false);
+                 rattata.setCurrentTurn(true);
              }
-             dragonite.setCurrentTurn(false);
-             rattata.setCurrentTurn(true);
+
+
+
+
          }
+         if (rattata.getCurrentTurn() && !rattata.getDead()) {
+             if (e.getKey() == KeyboardEvent.KEY_Q) {
 
-         if (e.getKey() == KeyboardEvent.KEY_B) {
+                 soundFX();
 
-             File file = new File(("/Users/codecadet/workspace/Java/Pokemon/resources/hit.wav"));
-             AudioInputStream audioStream = null;
-             try {
-                 audioStream = AudioSystem.getAudioInputStream(file);
-             } catch (UnsupportedAudioFileException ex) {
-                 throw new RuntimeException(ex);
-             } catch (IOException ex) {
-                 throw new RuntimeException(ex);
-             }
-             Clip clip = null;
-             try {
-                 clip = AudioSystem.getClip();
-             } catch (LineUnavailableException ex) {
-                 throw new RuntimeException(ex);
-             }
-             try {
-                 clip.open(audioStream);
-             } catch (LineUnavailableException ex) {
-                 throw new RuntimeException(ex);
-             } catch (IOException ex) {
-                 throw new RuntimeException(ex);
-             }
+                 rattata.fang(dragonite);
+                 dragonite.getHpBar().grow(-rattata.getFang() / 3.5, 0);
+                 dragonite.getHpBar().translate(-rattata.getFang() / 3.5, 0);
+                 rattataMove();
+                 dragonite.getCurrentHpText().setText("" + dragonite.currentHP);
+                 game.getAttackText().setText("Rattata used Fang!");
 
-             clip.start();
 
-             dragonite.wingAttack(rattata);
+                 if (dragonite.currentHP <= 0) {
+                     dragonite.isDead();
+                     dragoniteIsDead();
 
-             rattata.getHpBar().grow(-dragonite.getWingAttack() /3.5,0);
-             rattata.getHpBar().translate(-dragonite.getWingAttack()/3.5,0);
-             if (rattata.currentHP <= 0) {
-                 rattata.isDead();
+                 }
+
+                 rattata.setCurrentTurn(false);
+                 dragonite.setCurrentTurn(true);
 
              }
-             dragonite.setCurrentTurn(false);
-             rattata.setCurrentTurn(true);
-         }
 
-         if (e.getKey() == KeyboardEvent.KEY_V) {
+             if (e.getKey() == KeyboardEvent.KEY_W) {
 
-             File file = new File(("/Users/codecadet/workspace/Java/Pokemon/resources/hit.wav"));
-             AudioInputStream audioStream = null;
-             try {
-                 audioStream = AudioSystem.getAudioInputStream(file);
-             } catch (UnsupportedAudioFileException ex) {
-                 throw new RuntimeException(ex);
-             } catch (IOException ex) {
-                 throw new RuntimeException(ex);
-             }
-             Clip clip = null;
-             try {
-                 clip = AudioSystem.getClip();
-             } catch (LineUnavailableException ex) {
-                 throw new RuntimeException(ex);
-             }
-             try {
-                 clip.open(audioStream);
-             } catch (LineUnavailableException ex) {
-                 throw new RuntimeException(ex);
-             } catch (IOException ex) {
-                 throw new RuntimeException(ex);
-             }
+                 soundFX();
 
-             clip.start();
+                 rattata.hyperFang(dragonite);
+                 dragonite.getHpBar().grow(-rattata.getHyperFang() / 3.5, 0);
+                 dragonite.getHpBar().translate(-rattata.getHyperFang() / 3.5, 0);
+                 rattataMove();
+                 dragonite.getCurrentHpText().setText("" + dragonite.currentHP);
+                 game.getAttackText().setText("Rattata used Hyperfang!");
 
-             dragonite.tackle(rattata);
 
-             rattata.getHpBar().grow(-dragonite.getTackle() /3.5,0);
-             rattata.getHpBar().translate(-dragonite.getTackle()/3.5,0);
+                 if (dragonite.currentHP <= 0) {
+                     dragonite.isDead();
+                     dragoniteIsDead();
 
-             if (rattata.currentHP <= 0) {
-                 rattata.isDead();
+                 }
+
+                 rattata.setCurrentTurn(false);
+                 dragonite.setCurrentTurn(true);
 
              }
-             dragonite.setCurrentTurn(false);
-             rattata.setCurrentTurn(true);
+
+             if (e.getKey() == KeyboardEvent.KEY_E) {
+
+                 soundFX();
+
+                 rattata.tackle(dragonite);
+                 dragonite.getHpBar().grow(-rattata.getTackle() / 3.5, 0);
+                 dragonite.getHpBar().translate(-rattata.getTackle() / 3.5, 0);
+                 rattataMove();
+                 dragonite.getCurrentHpText().setText("" + dragonite.currentHP);
+                 game.getAttackText().setText("Rattata used tackle!");
+
+
+                 if (dragonite.currentHP <= 0) {
+                     dragonite.isDead();
+                     dragoniteIsDead();
+
+                 }
+
+                 rattata.setCurrentTurn(false);
+                 dragonite.setCurrentTurn(true);
+
+             }
+
+             if (e.getKey() == KeyboardEvent.KEY_R) {
+                 rattataMove();
+                 soundFX();
+
+                 rattata.surf(dragonite);
+
+                 dragonite.getHpBar().grow(-rattata.getSurf() / 3.5, 0);
+                 dragonite.getHpBar().translate(-rattata.getSurf() / 3.5, 0);
+                 dragonite.getCurrentHpText().setText("" + dragonite.currentHP);
+                 game.getAttackText().setText("Rattata used surf!");
+
+
+                 if (dragonite.currentHP <= 0) {
+                     dragonite.isDead();
+                     dragoniteIsDead();
+
+                 }
+
+                 rattata.setCurrentTurn(false);
+                 dragonite.setCurrentTurn(true);
+
+
+
+             }
+
+
          }
 
 
      }
-        if (rattata.getCurrentTurn() && !rattata.getDead()) {
-            if (e.getKey() == KeyboardEvent.KEY_Q) {
-
-                File file = new File(("/Users/codecadet/workspace/Java/Pokemon/resources/hit.wav"));
-                AudioInputStream audioStream = null;
-                try {
-                    audioStream = AudioSystem.getAudioInputStream(file);
-                } catch (UnsupportedAudioFileException ex) {
-                    throw new RuntimeException(ex);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-                Clip clip = null;
-                try {
-                    clip = AudioSystem.getClip();
-                } catch (LineUnavailableException ex) {
-                    throw new RuntimeException(ex);
-                }
-                try {
-                    clip.open(audioStream);
-                } catch (LineUnavailableException ex) {
-                    throw new RuntimeException(ex);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-
-                clip.start();
-
-                rattata.fang(dragonite);
-                dragonite.getHpBar().grow(-rattata.getFang()/3.5,0);
-                dragonite.getHpBar().translate(-rattata.getFang()/3.5,0);
-                if (dragonite.currentHP <= 0) {
-                    dragonite.isDead();
-
-                }
-                rattata.setCurrentTurn(false);
-                dragonite.setCurrentTurn(true);
-            }
-
-            if (e.getKey() == KeyboardEvent.KEY_W) {
-
-                File file = new File(("/Users/codecadet/workspace/Java/Pokemon/resources/hit.wav"));
-                AudioInputStream audioStream = null;
-                try {
-                    audioStream = AudioSystem.getAudioInputStream(file);
-                } catch (UnsupportedAudioFileException ex) {
-                    throw new RuntimeException(ex);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-                Clip clip = null;
-                try {
-                    clip = AudioSystem.getClip();
-                } catch (LineUnavailableException ex) {
-                    throw new RuntimeException(ex);
-                }
-                try {
-                    clip.open(audioStream);
-                } catch (LineUnavailableException ex) {
-                    throw new RuntimeException(ex);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-
-                clip.start();
-
-                rattata.hyperFang(dragonite);
-                dragonite.getHpBar().grow(-rattata.getHyperFang()/3.5,0);
-                dragonite.getHpBar().translate(-rattata.getHyperFang()/3.5,0);
-                if (dragonite.currentHP <= 0) {
-                    dragonite.isDead();
-
-                }
-                rattata.setCurrentTurn(false);
-                dragonite.setCurrentTurn(true);
-            }
-
-            if (e.getKey() == KeyboardEvent.KEY_E) {
-
-                File file = new File(("/Users/codecadet/workspace/Java/Pokemon/resources/hit.wav"));
-                AudioInputStream audioStream = null;
-                try {
-                    audioStream = AudioSystem.getAudioInputStream(file);
-                } catch (UnsupportedAudioFileException ex) {
-                    throw new RuntimeException(ex);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-                Clip clip = null;
-                try {
-                    clip = AudioSystem.getClip();
-                } catch (LineUnavailableException ex) {
-                    throw new RuntimeException(ex);
-                }
-                try {
-                    clip.open(audioStream);
-                } catch (LineUnavailableException ex) {
-                    throw new RuntimeException(ex);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-
-                clip.start();
-
-                rattata.tackle(dragonite);
-                dragonite.getHpBar().grow(-rattata.getTackle()/3.5,0);
-                dragonite.getHpBar().translate(-rattata.getTackle()/3.5,0);
-
-                if (dragonite.currentHP <= 0) {
-                    dragonite.isDead();
-
-                }
-                rattata.setCurrentTurn(false);
-                dragonite.setCurrentTurn(true);
-            }
-
-            if (e.getKey() == KeyboardEvent.KEY_R) {
-
-                File file = new File(("/Users/codecadet/workspace/Java/Pokemon/resources/hit.wav"));
-                AudioInputStream audioStream = null;
-                try {
-                    audioStream = AudioSystem.getAudioInputStream(file);
-                } catch (UnsupportedAudioFileException ex) {
-                    throw new RuntimeException(ex);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-                Clip clip = null;
-                try {
-                    clip = AudioSystem.getClip();
-                } catch (LineUnavailableException ex) {
-                    throw new RuntimeException(ex);
-                }
-                try {
-                    clip.open(audioStream);
-                } catch (LineUnavailableException ex) {
-                    throw new RuntimeException(ex);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
-                }
-
-                clip.start();
-
-                rattata.surf(dragonite);
-
-                dragonite.getHpBar().grow(-rattata.getSurf()/3.5,0);
-                dragonite.getHpBar().translate(-rattata.getSurf()/3.5,0);
-
-
-
-                if (dragonite.currentHP <= 0) {
-                    dragonite.isDead();
-
-                }
-
-
-                rattata.setCurrentTurn(false);
-                dragonite.setCurrentTurn(true);
-            }
-
-//            rattata.setCurrentTurn(false);
-//            dragonite.setCurrentTurn(true);
-        }
     }
+
+    public void dragoniteIsDead(){
+        game.getAttackText().setText("Dragonite fainted!");
+        dragonite.getSprite().load("resources/dragoniteRip.png");
+        dragonite.getSprite().translate(30,100);
+        dragonite.getCurrentHpText().setText("000");
+    }
+
+    public void ratIsDead(){
+        game.getAttackText().setText("Ratatta fainted!");
+        rattata.getSprite().load("resources/ratRip.png");
+        rattata.getCurrentHpText().setText("000");
+
+    }
+
+
 
     @Override
     public void keyReleased(KeyboardEvent e) {
@@ -430,5 +316,65 @@ public class MyKeyboardHandle implements KeyboardHandler {
     public void setDragonite(Dragonite dragonite) {
      this.dragonite = dragonite;
     }
+
+    public void setStartScreen(Picture picture){
+        this.startScreen = picture;
+    }
+
+    private void soundFX() {
+
+        File file = new File(("/Users/codecadet/workspace/Java/Pokemon/resources/hit.wav"));
+        AudioInputStream audioStream = null;
+        try {
+            audioStream = AudioSystem.getAudioInputStream(file);
+        } catch (UnsupportedAudioFileException ex) {
+            throw new RuntimeException(ex);
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+        Clip clip = null;
+        try {
+            clip = AudioSystem.getClip();
+        } catch (LineUnavailableException ex) {
+            throw new RuntimeException(ex);
+        }
+        try {
+            clip.open(audioStream);
+        } catch (LineUnavailableException ex) {
+            throw new RuntimeException(ex);
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+
+        clip.start();
+
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+
+    public void rattataMove(){
+        rattata.getSprite().translate(100,-100);
+        rattata.getSprite().translate(-100,100);
+
+    }
+
+    public void dragoniteMove(){
+        dragonite.getSprite().translate(10,-10);
+        dragonite.getSprite().translate(-10,10);
+
+    }
+
+    private void delayMethod(int ms) {
+
+        try {
+            Thread.sleep(ms);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

@@ -10,19 +10,18 @@ public class Rattata extends Pokemon{
     private int hyperFang;
     private int surf;
     private boolean currentTurn = false;
-    private Rectangle hpBarRattata;
-
 
     public Rattata(Picture fotoDoRato) {
+
         super(fotoDoRato);
-        this.fang = 1;
-        this.tackle =1;
-        this.hyperFang =1;
-        this.surf = 250;
 
-
+        this.fang = 70;
+        this.tackle =30;
+        this.hyperFang =120;
+        this.surf = 170;
 
     }
+
     public void fang(Pokemon pokemon){
 
         pokemon.currentHP -= fang;
@@ -35,6 +34,7 @@ public class Rattata extends Pokemon{
         pokemon.currentHP -= tackle;
         System.out.println("Rattata used tackle");
         System.out.println("Dragonite HP: " + pokemon.currentHP + "\n");
+
     }
 
     public void hyperFang (Pokemon pokemon){
@@ -42,6 +42,7 @@ public class Rattata extends Pokemon{
         pokemon.currentHP -= hyperFang;
         System.out.println("Rattata used Hyper Fang");
         System.out.println("Dragonite HP: " + pokemon.currentHP + "\n");
+
     }
 
     public void surf (Pokemon pokemon){
@@ -50,11 +51,12 @@ public class Rattata extends Pokemon{
 
         System.out.println("Rattata used Surf");
         System.out.println("Dragonite HP: " + pokemon.currentHP +"\n");
+
     }
+
     public boolean getCurrentTurn() {
         return currentTurn;
     }
-
 
     public void setCurrentTurn(boolean turn){
         this.currentTurn = turn;

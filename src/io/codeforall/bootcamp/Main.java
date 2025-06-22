@@ -12,48 +12,54 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 import java.awt.*;
 
 public class Main {
+
     public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
 
-        File victorySong = new File("/Users/codecadet/workspace/Java/Pokemon/resources/victory.wav");
+        //Sound
+        File victorySong = new File("/Users/codecadet/workspace/Java/Pokemon/resources/victoryTheme.wav");
         File file = new File(("/Users/codecadet/workspace/Java/Pokemon/resources/background music.wav"));
+
         AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
         Clip clip = AudioSystem.getClip();
         clip.open(audioStream);
 
         clip.start();
-        clip.loop(5);
+        clip.loop(2);
+
+        //Images
+        Picture startScreen = new Picture(10,10,"resources/StartScreen.png");
 
         Picture sprite = new Picture(150, 100, "resources/dragonite sprites.png");
         Picture fotoDoRato = new Picture(450, -20, "resources/ratoAgain.png");
+
+        //Keyboard Functionality
         MyKeyboardHandle keyboardHandle = new MyKeyboardHandle();
         keyboardHandle.init();
+
+        //Pokémon Game Start
         Dragonite dragonite = new Dragonite(sprite);
         Rattata rattata = new Rattata(fotoDoRato);
         keyboardHandle.setDragonite(dragonite);
         keyboardHandle.setRattata(rattata);
+        keyboardHandle.setStartScreen(startScreen);
+
         Game game1= new Game( dragonite,rattata);
 
+        game1.init();
+        startScreen.draw();
+        keyboardHandle.setGame(game1);
 
 
-
-
-
-
-//        if (dragonite.isDead() = true || rattata.isDead() = true) {
+//        if (dragonite.getDead() || rattata.getDead()) {
 //
 //            clip.stop();
 //
 //            AudioInputStream victoryStream = AudioSystem.getAudioInputStream(victorySong);
 //            Clip victory = AudioSystem.getClip();
-//            clip.open(victoryStream);
+//            victory.open(victoryStream);
 //
-//            clip.start();
-//
+//            victory.start();
 //
 //        }
-//
-
-
-
     }
 }
