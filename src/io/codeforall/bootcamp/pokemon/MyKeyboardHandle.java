@@ -7,6 +7,10 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
+import javax.sound.sampled.*;
+import java.io.File;
+import java.io.IOException;
+
 public class MyKeyboardHandle implements KeyboardHandler {
 
  private Keyboard keyboard;
@@ -90,7 +94,36 @@ public class MyKeyboardHandle implements KeyboardHandler {
 
      if (dragonite.getCurrentTurn() && !dragonite.getDead()) {
          if (e.getKey() == KeyboardEvent.KEY_M) {
+
+             File file = new File(("/Users/codecadet/workspace/Java/Pokemon/resources/hit.wav"));
+             AudioInputStream audioStream = null;
+             try {
+                 audioStream = AudioSystem.getAudioInputStream(file);
+             } catch (UnsupportedAudioFileException ex) {
+                 throw new RuntimeException(ex);
+             } catch (IOException ex) {
+                 throw new RuntimeException(ex);
+             }
+             Clip clip = null;
+             try {
+                 clip = AudioSystem.getClip();
+             } catch (LineUnavailableException ex) {
+                 throw new RuntimeException(ex);
+             }
+             try {
+                 clip.open(audioStream);
+             } catch (LineUnavailableException ex) {
+                 throw new RuntimeException(ex);
+             } catch (IOException ex) {
+                 throw new RuntimeException(ex);
+             }
+
+             clip.start();
+
              dragonite.outrage(rattata);
+             rattata.getHpBar().grow(-dragonite.getOutrage() /3.5,0);
+             rattata.getHpBar().translate(-dragonite.getOutrage()/3.5,0);
+
              if (rattata.currentHP <= 0) {
                  rattata.isDead();
 
@@ -101,7 +134,36 @@ public class MyKeyboardHandle implements KeyboardHandler {
          }
 
          if (e.getKey() == KeyboardEvent.KEY_N) {
+
+             File file = new File(("/Users/codecadet/workspace/Java/Pokemon/resources/hit.wav"));
+             AudioInputStream audioStream = null;
+             try {
+                 audioStream = AudioSystem.getAudioInputStream(file);
+             } catch (UnsupportedAudioFileException ex) {
+                 throw new RuntimeException(ex);
+             } catch (IOException ex) {
+                 throw new RuntimeException(ex);
+             }
+             Clip clip = null;
+             try {
+                 clip = AudioSystem.getClip();
+             } catch (LineUnavailableException ex) {
+                 throw new RuntimeException(ex);
+             }
+             try {
+                 clip.open(audioStream);
+             } catch (LineUnavailableException ex) {
+                 throw new RuntimeException(ex);
+             } catch (IOException ex) {
+                 throw new RuntimeException(ex);
+             }
+
+             clip.start();
+
              dragonite.hurricane(rattata);
+
+             rattata.getHpBar().grow(-dragonite.getHurricane() /3.5,0);
+             rattata.getHpBar().translate(-dragonite.getHurricane()/3.5,0);
              if (rattata.currentHP <= 0) {
                  rattata.isDead();
 
@@ -111,7 +173,36 @@ public class MyKeyboardHandle implements KeyboardHandler {
          }
 
          if (e.getKey() == KeyboardEvent.KEY_B) {
+
+             File file = new File(("/Users/codecadet/workspace/Java/Pokemon/resources/hit.wav"));
+             AudioInputStream audioStream = null;
+             try {
+                 audioStream = AudioSystem.getAudioInputStream(file);
+             } catch (UnsupportedAudioFileException ex) {
+                 throw new RuntimeException(ex);
+             } catch (IOException ex) {
+                 throw new RuntimeException(ex);
+             }
+             Clip clip = null;
+             try {
+                 clip = AudioSystem.getClip();
+             } catch (LineUnavailableException ex) {
+                 throw new RuntimeException(ex);
+             }
+             try {
+                 clip.open(audioStream);
+             } catch (LineUnavailableException ex) {
+                 throw new RuntimeException(ex);
+             } catch (IOException ex) {
+                 throw new RuntimeException(ex);
+             }
+
+             clip.start();
+
              dragonite.wingAttack(rattata);
+
+             rattata.getHpBar().grow(-dragonite.getWingAttack() /3.5,0);
+             rattata.getHpBar().translate(-dragonite.getWingAttack()/3.5,0);
              if (rattata.currentHP <= 0) {
                  rattata.isDead();
 
@@ -121,7 +212,37 @@ public class MyKeyboardHandle implements KeyboardHandler {
          }
 
          if (e.getKey() == KeyboardEvent.KEY_V) {
+
+             File file = new File(("/Users/codecadet/workspace/Java/Pokemon/resources/hit.wav"));
+             AudioInputStream audioStream = null;
+             try {
+                 audioStream = AudioSystem.getAudioInputStream(file);
+             } catch (UnsupportedAudioFileException ex) {
+                 throw new RuntimeException(ex);
+             } catch (IOException ex) {
+                 throw new RuntimeException(ex);
+             }
+             Clip clip = null;
+             try {
+                 clip = AudioSystem.getClip();
+             } catch (LineUnavailableException ex) {
+                 throw new RuntimeException(ex);
+             }
+             try {
+                 clip.open(audioStream);
+             } catch (LineUnavailableException ex) {
+                 throw new RuntimeException(ex);
+             } catch (IOException ex) {
+                 throw new RuntimeException(ex);
+             }
+
+             clip.start();
+
              dragonite.tackle(rattata);
+
+             rattata.getHpBar().grow(-dragonite.getTackle() /3.5,0);
+             rattata.getHpBar().translate(-dragonite.getTackle()/3.5,0);
+
              if (rattata.currentHP <= 0) {
                  rattata.isDead();
 
@@ -134,7 +255,35 @@ public class MyKeyboardHandle implements KeyboardHandler {
      }
         if (rattata.getCurrentTurn() && !rattata.getDead()) {
             if (e.getKey() == KeyboardEvent.KEY_Q) {
+
+                File file = new File(("/Users/codecadet/workspace/Java/Pokemon/resources/hit.wav"));
+                AudioInputStream audioStream = null;
+                try {
+                    audioStream = AudioSystem.getAudioInputStream(file);
+                } catch (UnsupportedAudioFileException ex) {
+                    throw new RuntimeException(ex);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+                Clip clip = null;
+                try {
+                    clip = AudioSystem.getClip();
+                } catch (LineUnavailableException ex) {
+                    throw new RuntimeException(ex);
+                }
+                try {
+                    clip.open(audioStream);
+                } catch (LineUnavailableException ex) {
+                    throw new RuntimeException(ex);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+                clip.start();
+
                 rattata.fang(dragonite);
+                dragonite.getHpBar().grow(-rattata.getFang()/3.5,0);
+                dragonite.getHpBar().translate(-rattata.getFang()/3.5,0);
                 if (dragonite.currentHP <= 0) {
                     dragonite.isDead();
 
@@ -144,7 +293,35 @@ public class MyKeyboardHandle implements KeyboardHandler {
             }
 
             if (e.getKey() == KeyboardEvent.KEY_W) {
+
+                File file = new File(("/Users/codecadet/workspace/Java/Pokemon/resources/hit.wav"));
+                AudioInputStream audioStream = null;
+                try {
+                    audioStream = AudioSystem.getAudioInputStream(file);
+                } catch (UnsupportedAudioFileException ex) {
+                    throw new RuntimeException(ex);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+                Clip clip = null;
+                try {
+                    clip = AudioSystem.getClip();
+                } catch (LineUnavailableException ex) {
+                    throw new RuntimeException(ex);
+                }
+                try {
+                    clip.open(audioStream);
+                } catch (LineUnavailableException ex) {
+                    throw new RuntimeException(ex);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+                clip.start();
+
                 rattata.hyperFang(dragonite);
+                dragonite.getHpBar().grow(-rattata.getHyperFang()/3.5,0);
+                dragonite.getHpBar().translate(-rattata.getHyperFang()/3.5,0);
                 if (dragonite.currentHP <= 0) {
                     dragonite.isDead();
 
@@ -154,7 +331,36 @@ public class MyKeyboardHandle implements KeyboardHandler {
             }
 
             if (e.getKey() == KeyboardEvent.KEY_E) {
+
+                File file = new File(("/Users/codecadet/workspace/Java/Pokemon/resources/hit.wav"));
+                AudioInputStream audioStream = null;
+                try {
+                    audioStream = AudioSystem.getAudioInputStream(file);
+                } catch (UnsupportedAudioFileException ex) {
+                    throw new RuntimeException(ex);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+                Clip clip = null;
+                try {
+                    clip = AudioSystem.getClip();
+                } catch (LineUnavailableException ex) {
+                    throw new RuntimeException(ex);
+                }
+                try {
+                    clip.open(audioStream);
+                } catch (LineUnavailableException ex) {
+                    throw new RuntimeException(ex);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+                clip.start();
+
                 rattata.tackle(dragonite);
+                dragonite.getHpBar().grow(-rattata.getTackle()/3.5,0);
+                dragonite.getHpBar().translate(-rattata.getTackle()/3.5,0);
+
                 if (dragonite.currentHP <= 0) {
                     dragonite.isDead();
 
@@ -164,10 +370,37 @@ public class MyKeyboardHandle implements KeyboardHandler {
             }
 
             if (e.getKey() == KeyboardEvent.KEY_R) {
+
+                File file = new File(("/Users/codecadet/workspace/Java/Pokemon/resources/hit.wav"));
+                AudioInputStream audioStream = null;
+                try {
+                    audioStream = AudioSystem.getAudioInputStream(file);
+                } catch (UnsupportedAudioFileException ex) {
+                    throw new RuntimeException(ex);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+                Clip clip = null;
+                try {
+                    clip = AudioSystem.getClip();
+                } catch (LineUnavailableException ex) {
+                    throw new RuntimeException(ex);
+                }
+                try {
+                    clip.open(audioStream);
+                } catch (LineUnavailableException ex) {
+                    throw new RuntimeException(ex);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+                clip.start();
+
                 rattata.surf(dragonite);
 
-                dragonite.getHpBar().grow(-250/3.5,0);
-//
+                dragonite.getHpBar().grow(-rattata.getSurf()/3.5,0);
+                dragonite.getHpBar().translate(-rattata.getSurf()/3.5,0);
+
 
 
                 if (dragonite.currentHP <= 0) {

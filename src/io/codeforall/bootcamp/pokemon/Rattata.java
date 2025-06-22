@@ -10,6 +10,7 @@ public class Rattata extends Pokemon{
     private int hyperFang;
     private int surf;
     private boolean currentTurn = false;
+    private Rectangle hpBarRattata;
 
 
     public Rattata(Picture fotoDoRato) {
@@ -26,21 +27,21 @@ public class Rattata extends Pokemon{
 
         pokemon.currentHP -= fang;
         System.out.println("Rattata used fang");
-        System.out.println("Dragonite HP: " + pokemon.currentHP);
+        System.out.println("Dragonite HP: " + pokemon.currentHP + "\n");
 
     }
     public void tackle (Pokemon pokemon){
 
         pokemon.currentHP -= tackle;
         System.out.println("Rattata used tackle");
-        System.out.println("Dragonite HP: " + pokemon.currentHP);
+        System.out.println("Dragonite HP: " + pokemon.currentHP + "\n");
     }
 
     public void hyperFang (Pokemon pokemon){
 
         pokemon.currentHP -= hyperFang;
         System.out.println("Rattata used Hyper Fang");
-        System.out.println("Dragonite HP: " + pokemon.currentHP);
+        System.out.println("Dragonite HP: " + pokemon.currentHP + "\n");
     }
 
     public void surf (Pokemon pokemon){
@@ -48,7 +49,7 @@ public class Rattata extends Pokemon{
         pokemon.currentHP -= surf;
 
         System.out.println("Rattata used Surf");
-        System.out.println("Dragonite HP: " + pokemon.currentHP);
+        System.out.println("Dragonite HP: " + pokemon.currentHP +"\n");
     }
     public boolean getCurrentTurn() {
         return currentTurn;
@@ -61,5 +62,27 @@ public class Rattata extends Pokemon{
 
     public int getSurf() {
         return surf;
+    }
+
+    @Override
+    public void setHpBar(Rectangle hpBar) {
+        super.setHpBar(hpBar);
+    }
+
+    @Override
+    public Rectangle getHpBar() {
+        return super.getHpBar();
+    }
+
+    public int getFang() {
+        return fang;
+    }
+
+    public int getHyperFang() {
+        return hyperFang;
+    }
+
+    public int getTackle() {
+        return tackle;
     }
 }

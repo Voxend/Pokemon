@@ -17,7 +17,7 @@ public class Pokemon {
 
     public Pokemon(Picture sprite) {
         this.sprite = sprite;
-//        hpBar =  new Rectangle(700,500,currentHP/1.75,35);
+
 
     }
 
@@ -34,16 +34,6 @@ public class Pokemon {
     public Picture getSprite() {
         return sprite;
     }
-    //    public void useMove(Pokemon opponent, Move move) {
-//
-//        opponent.currentHP -= move.getPower();
-//        System.out.println(opponent.currentHP);
-//        if(opponent.currentHP <= 0){
-//            opponent.isDead();
-//
-//        }
-//    }
-
     public boolean getDead() {
         return dead;
     }

@@ -2,7 +2,6 @@ package io.codeforall.bootcamp.pokemon;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
-import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Game {
@@ -21,17 +20,36 @@ public class Game {
         p2.getSprite().draw();
         p2.getSprite().grow(-170,-170);
 
-        Rectangle dragoniteHP = new Rectangle(700 , 500 , 500/1.75 , 35);
+        Rectangle dragoniteHPbg = new Rectangle(630 , 484 , 500/1.75 , 38);
+        dragoniteHPbg.fill();
+        dragoniteHPbg.setColor(Color.GRAY);
+
+        Rectangle dragoniteHP = new Rectangle(630 , 490 , 500/1.75 , 28);
         p1.setHpBar(dragoniteHP);
         dragoniteHP.fill();
         dragoniteHP.setColor(Color.GREEN);
+        Picture dragHp = new Picture(590 ,480 , "resources/hpbar.png");
+        dragHp.draw();
+        dragHp.grow(-17,0);
+
+
+        Rectangle ratHPbg = new Rectangle(75 , 25 , 500/1.75 , 38);
+        ratHPbg.fill();
+        ratHPbg.setColor(Color.GRAY);
+
+        Rectangle rattataHP = new Rectangle(75 , 29, 500/1.75 , 28);
+        p2.setHpBar(rattataHP);
+        Picture ratHp = new Picture(36,19 , "resources/hpbar.png");
+        rattataHP.fill();
+        rattataHP.setColor(Color.GREEN);
+        ratHp.draw();
+        ratHp.grow(-17,0);
+
     }
 
 
 
-//    public void start(){
-//        while ()
-//    }
+
 
 
 }

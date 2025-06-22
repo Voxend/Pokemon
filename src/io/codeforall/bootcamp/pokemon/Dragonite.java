@@ -32,7 +32,7 @@ public class Dragonite extends Pokemon {
          
         System.out.println("Dragonite used Outrage");
 
-        System.out.println("Rattata HP: " + pokemon.currentHP);
+        System.out.println("Rattata HP: " + pokemon.currentHP + "\n");
 
 
     }
@@ -42,7 +42,7 @@ public class Dragonite extends Pokemon {
       pokemon.currentHP -= hurricane;
 
         System.out.println("Dragonite used Hurricane");
-        System.out.println("Rattata HP: " + pokemon.currentHP);
+        System.out.println("Rattata HP: " + pokemon.currentHP + "\n");
 
     }
 
@@ -50,14 +50,14 @@ public class Dragonite extends Pokemon {
 
         pokemon.currentHP -= wingAttack;
           System.out.println("Dragonite used Wing Attack");
-           System.out.println("Rattata HP: " + pokemon.currentHP);
+           System.out.println("Rattata HP: " + pokemon.currentHP + "\n");
 
     }
    public void tackle(Pokemon pokemon){
 
         pokemon.currentHP -= tackle;
         System.out.println("Dragonite used Tackle");
-         System.out.println("Rattata HP: " + pokemon.currentHP);
+         System.out.println("Rattata HP: " + pokemon.currentHP + "\n");
    }
 
     public boolean getCurrentTurn() {
@@ -69,7 +69,23 @@ public class Dragonite extends Pokemon {
            this.currentTurn = turn;
     }
 
-//    public void setHpBar(Rectangle hpBar) {
+    public int getTackle() {
+        return tackle;
+    }
+
+    public int getHurricane() {
+        return hurricane;
+    }
+
+    public int getWingAttack() {
+        return wingAttack;
+    }
+
+    public int getOutrage() {
+        return outrage;
+    }
+
+    //    public void setHpBar(Rectangle hpBar) {
 //        this.hpBar = hpBar;
 //    }
 }
