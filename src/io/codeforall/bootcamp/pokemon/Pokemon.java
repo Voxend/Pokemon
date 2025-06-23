@@ -4,7 +4,14 @@ package io.codeforall.bootcamp.pokemon;
     import org.academiadecodigo.simplegraphics.graphics.Text;
     import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-public class Pokemon {
+public abstract class Pokemon {
+
+    private int attack1;
+    private int attack2;
+    private int attack3;
+    private int attack4;
+
+
 
     private String name;
     private String type;
@@ -60,5 +67,28 @@ public class Pokemon {
 
     public Text getCurrentHpText() {
         return currentHpText;
+    }
+
+
+
+    public abstract void attack1(Pokemon pokemon);
+    public abstract void attack2(Pokemon pokemon);
+    public abstract void attack3(Pokemon pokemon);
+    public abstract void attack4(Pokemon pokemon);
+
+    public int getAttack1() {
+        return attack1;
+    }
+
+    public int getAttack2() {
+        return attack2;
+    }
+
+    public int getAttack3() {
+        return attack3;
+    }
+
+    public int getAttack4() {
+        return attack4;
     }
 }

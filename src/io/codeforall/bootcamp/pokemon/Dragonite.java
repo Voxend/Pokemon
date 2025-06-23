@@ -1,29 +1,28 @@
 package io.codeforall.bootcamp.pokemon;
 
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Dragonite extends Pokemon {
 
-    private int outrage;
-    private int hurricane;
-    private int wingAttack;
-    private int tackle;
+    private int attack1;
+    private int attack2;
+    private int attack3;
+    private int attack4;
     private boolean currentTurn = true;
 
     public Dragonite(Picture sprite){
 
         super(sprite);
 
-        this.outrage = 120;
-        this.hurricane = 110;
-        this.wingAttack = 75;
-        this.tackle = 30;
+        this.attack1 = 120;
+        this.attack2 = 110;
+        this.attack3 = 75;
+        this.attack4 = 30;
 
     }
 
-    public void outrage(Pokemon pokemon){
+    @Override
+    public void attack1(Pokemon pokemon){
 
         pokemon.currentHP -= outrage;
          
@@ -33,7 +32,8 @@ public class Dragonite extends Pokemon {
 
     }
 
-    public void hurricane(Pokemon pokemon){
+    @Override
+    public void attack2(Pokemon pokemon){
 
       pokemon.currentHP -= hurricane;
 
@@ -42,7 +42,8 @@ public class Dragonite extends Pokemon {
 
     }
 
-    public void  wingAttack (Pokemon pokemon){
+    @Override
+    public void  attack3(Pokemon pokemon){
 
         pokemon.currentHP -= wingAttack;
         System.out.println("Dragonite used Wing Attack");
@@ -50,7 +51,8 @@ public class Dragonite extends Pokemon {
 
     }
 
-    public void tackle(Pokemon pokemon){
+    @Override
+    public void attack4(Pokemon pokemon){
 
         pokemon.currentHP -= tackle;
         System.out.println("Dragonite used Tackle");
@@ -66,20 +68,22 @@ public class Dragonite extends Pokemon {
            this.currentTurn = turn;
     }
 
-    public int getTackle() {
-        return tackle;
+    public int getAttack1() {
+        return attack1;
     }
 
-    public int getHurricane() {
-        return hurricane;
+    public int getAttack2() {
+        return attack2;
     }
 
-    public int getWingAttack() {
-        return wingAttack;
+    public int getAttack3() {
+        return attack3;
     }
 
-    public int getOutrage() {
-        return outrage;
+    public int getAttack4() {
+        return attack4;
     }
+
+
 
 }

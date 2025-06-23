@@ -10,9 +10,14 @@ public class Game {
     private Pokemon p1;
     private Pokemon p2;
     private Picture picture;
-    private MyKeyboardHandle keyboardHandle;
+
     private boolean isStarted = false;
     private Text attackText;
+    private boolean p1Turn = true;
+    private boolean p2Turn = false;
+
+    private Rectangle p1Hpbar;
+    private Rectangle p2Hpbar;
 
     public Game(Pokemon p1,Pokemon p2) {
 
@@ -20,7 +25,7 @@ public class Game {
         this.p2 = p2;
         this.picture = new Picture(10,10,"resources/image.png");
         picture.draw();
-        keyboardHandle= new MyKeyboardHandle();
+
         this.attackText = new Text(310, 470,"What will Dragonite do?");
 
     }
@@ -38,10 +43,10 @@ public class Game {
         dragoniteHPbg.fill();
         dragoniteHPbg.setColor(Color.GRAY);
 
-        Rectangle dragoniteHP = new Rectangle(630 , 490 , 500/1.75 , 28);
-        p1.setHpBar(dragoniteHP);
-        dragoniteHP.fill();
-        dragoniteHP.setColor(Color.GREEN);
+        p1Hpbar = new Rectangle(630 , 490 , 500/1.75 , 28);
+
+        p1Hpbar.fill();
+        p1Hpbar.setColor(Color.GREEN);
         Picture dragHp = new Picture(590 ,480 , "resources/hpbar.png");
         dragHp.draw();
         dragHp.grow(-17,0);
@@ -62,11 +67,11 @@ public class Game {
         ratHPbg.fill();
         ratHPbg.setColor(Color.GRAY);
 
-        Rectangle rattataHP = new Rectangle(75 , 29, 500/1.75 , 28);
-        p2.setHpBar(rattataHP);
+        p2Hpbar = new Rectangle(75 , 29, 500/1.75 , 28);
+
         Picture ratHp = new Picture(36,19 , "resources/hpbar.png");
-        rattataHP.fill();
-        rattataHP.setColor(Color.GREEN);
+        p2Hpbar.fill();
+        p2Hpbar.setColor(Color.GREEN);
         ratHp.draw();
         ratHp.grow(-17,0);
 
@@ -97,6 +102,75 @@ public class Game {
 
     }
 
+    public void p1Attack1(){
+        p1.attack1(p2);
+        if(p2.currentHP <= 0){
+            p2.isDead();
+        }
+
+        p2Hpbar.grow(-p1.getAttack1()/3.5,0);
+        p2Hpbar.translate(-p1.getAttack1()/3.5,0);
+    }
+
+    public void p1Attack2(){
+        p1.attack2(p2);
+        if(p2.currentHP <= 0){
+            p2.isDead();
+        }
+        p2Hpbar.grow(-120/3.5,0);
+        p2Hpbar.translate(-120/3.5,0);
+    }
+
+    public void p1Attack3(){
+        p1.attack3(p2);
+        if(p2.currentHP <= 0){
+            p2.isDead();
+        }
+        p2Hpbar.grow(-120/3.5,0);
+        p2Hpbar.translate(-120/3.5,0);
+    }
+
+    public void p1Attack4(){
+        p1.attack4(p2);
+        if(p2.currentHP <= 0){
+            p2.isDead();
+        }
+        p2Hpbar.grow(-120/3.5,0);
+        p2Hpbar.translate(-120/3.5,0);
+    }
+
+    public void p2Attack1(){
+        p2.attack1(p1);
+        if(p1.currentHP <= 0){
+            p1.isDead();
+        }
+    }
+
+    public void p2Attack2(){
+        p2.attack2(p1);
+        if(p1.currentHP <= 0){
+            p1.isDead();
+        }
+    }
+
+    public void p2Attack3(){
+        p2.attack3(p1);
+        if(p1.currentHP <= 0){
+            p1.isDead();
+        }
+    }
+
+    public void p2Attack4(){
+        p2.attack4(p1);
+        if(p1.currentHP <= 0){
+            p1.isDead();
+        }
+    }
+
+
+
+
+
     public void setStarted(boolean started) {
         isStarted = started;
     }
@@ -109,7 +183,35 @@ public class Game {
         return attackText;
     }
 
+    public void setP1(Pokemon p1) {
+        this.p1 = p1;
+    }
 
+    public Pokemon getP1() {
+        return p1;
+    }
 
+    public Pokemon getP2() {
+        return p2;
+    }
 
+    public void setP2(Pokemon p2) {
+        this.p2 = p2;
+    }
+
+    public boolean isP1Turn() {
+        return p1Turn;
+    }
+
+    public boolean isP2Turn() {
+        return p2Turn;
+    }
+
+    public void setP1Turn(boolean p1Turn) {
+        this.p1Turn = p1Turn;
+    }
+
+    public void setP2Turn(boolean p2Turn) {
+        this.p2Turn = p2Turn;
+    }
 }

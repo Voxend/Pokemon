@@ -39,15 +39,16 @@ public class Main {
         //Pokémon Game Start
         Dragonite dragonite = new Dragonite(sprite);
         Rattata rattata = new Rattata(fotoDoRato);
-        keyboardHandle.setDragonite(dragonite);
-        keyboardHandle.setRattata(rattata);
+
         keyboardHandle.setStartScreen(startScreen);
 
-        Game game1= new Game( dragonite,rattata);
+        Game game1= new Game(dragonite,rattata);
 
         game1.init();
         startScreen.draw();
         keyboardHandle.setGame(game1);
+        keyboardHandle.setP1(game1.getP1());
+        keyboardHandle.setP2(game1.getP2());
 
 
 //        if (dragonite.getDead() || rattata.getDead()) {

@@ -15,10 +15,12 @@ import java.io.IOException;
 public class MyKeyboardHandle implements KeyboardHandler {
 
  private Keyboard keyboard;
- private Dragonite dragonite;
- private Rattata rattata;
  private Picture startScreen;
  private Game game;
+ private Pokemon p1;
+ private Pokemon p2;
+
+
 
 
  public void init(){
@@ -78,229 +80,80 @@ public class MyKeyboardHandle implements KeyboardHandler {
  }
 
     @Override
-
-
-
     public void keyPressed(KeyboardEvent e) {
-     if (!game.isStarted()) {
-         if (e.getKey() == KeyboardEvent.KEY_SPACE) {
-             startScreen.delete();
-             game.setStarted(true);
-         }
-     }else {
+        if (!game.isStarted()) {
+            if (e.getKey() == KeyboardEvent.KEY_SPACE) {
+                startScreen.delete();
+                game.setStarted(true);
+            }
+        } else {
 
-         if ((dragonite.getCurrentTurn() && !dragonite.getDead())) {
-             if (e.getKey() == KeyboardEvent.KEY_M) {
+            if ((game.isP1Turn() && !p1.getDead())) {
+                if (e.getKey() == KeyboardEvent.KEY_M) {
+                    game.p1Attack1();
+                    game.setP1Turn(false);
+                    game.setP2Turn(true);
+                }
 
-                 soundFX();
+                if (e.getKey() == KeyboardEvent.KEY_N) {
+                    game.p1Attack2();
+                    game.setP1Turn(false);
+                    game.setP2Turn(true);
+                }
 
-                 dragonite.outrage(rattata);
-                 rattata.getHpBar().grow(-dragonite.getOutrage() / 3.5, 0);
-                 rattata.getHpBar().translate(-dragonite.getOutrage() / 3.5, 0);
-                 dragoniteMove();
-                 rattata.getCurrentHpText().setText("" + rattata.currentHP);
-                 game.getAttackText().setText("Dragonite used Outrage!");
+                if (e.getKey() == KeyboardEvent.KEY_B) {
+                    game.p1Attack3();
+                    game.setP1Turn(false);
+                    game.setP2Turn(true);
+                }
 
+                if (e.getKey() == KeyboardEvent.KEY_V) {
+                    game.p1Attack4();
+                    game.setP1Turn(false);
+                    game.setP2Turn(true);
+                }
 
 
-                 if (rattata.currentHP <= 0) {
-                     rattata.isDead();
-                     ratIsDead();
+            }
+            if (game.isP2Turn() && !p2.getDead()) {
+                if (e.getKey() == KeyboardEvent.KEY_Q) {
+                    game.p2Attack1();
+                    game.setP1Turn(true);
+                    game.setP2Turn(false);
 
-                 }
-                 dragonite.setCurrentTurn(false);
-                 rattata.setCurrentTurn(true);
-             }
+                }
 
-             if (e.getKey() == KeyboardEvent.KEY_N) {
+                if (e.getKey() == KeyboardEvent.KEY_W) {
+                    game.p2Attack2();
+                    game.setP1Turn(true);
+                    game.setP2Turn(false);
 
-                 soundFX();
 
-                 dragonite.hurricane(rattata);
+                }
 
-                 rattata.getHpBar().grow(-dragonite.getHurricane() / 3.5, 0);
-                 rattata.getHpBar().translate(-dragonite.getHurricane() / 3.5, 0);
-                 dragoniteMove();
-                 rattata.getCurrentHpText().setText("" + rattata.currentHP);
-                 game.getAttackText().setText("Dragonite used Hurricane!");
+                if (e.getKey() == KeyboardEvent.KEY_E) {
+                    game.p2Attack3();
+                    game.setP1Turn(true);
+                    game.setP2Turn(false);
 
+                }
 
-                 if (rattata.currentHP <= 0) {
-                     rattata.isDead();
-                     ratIsDead();
+                if (e.getKey() == KeyboardEvent.KEY_R) {
+                    game.p2Attack4();
+                    game.setP1Turn(true);
+                    game.setP2Turn(false);
 
-                 }
 
-                 dragonite.setCurrentTurn(false);
-                 rattata.setCurrentTurn(true);
+                }
 
-             }
 
-             if (e.getKey() == KeyboardEvent.KEY_B) {
+            }
 
-                 soundFX();
 
-                 dragonite.wingAttack(rattata);
+        }
 
-                 rattata.getHpBar().grow(-dragonite.getWingAttack() / 3.5, 0);
-                 rattata.getHpBar().translate(-dragonite.getWingAttack() / 3.5, 0);
-                 dragoniteMove();
-                 rattata.getCurrentHpText().setText("" + rattata.currentHP);
-                 game.getAttackText().setText("Dragonite used Wing Attack!");
-
-
-                 if (rattata.currentHP <= 0) {
-                     rattata.isDead();
-                     ratIsDead();
-
-                 }
-
-                 dragonite.setCurrentTurn(false);
-                 rattata.setCurrentTurn(true);
-             }
-
-             if (e.getKey() == KeyboardEvent.KEY_V) {
-
-                 soundFX();
-
-                 dragonite.tackle(rattata);
-
-                 rattata.getHpBar().grow(-dragonite.getTackle() / 3.5, 0);
-                 rattata.getHpBar().translate(-dragonite.getTackle() / 3.5, 0);
-                 dragoniteMove();
-                 rattata.getCurrentHpText().setText("" + rattata.currentHP);
-                 game.getAttackText().setText("Dragonite used Tackle!");
-
-
-                 if (rattata.currentHP <= 0) {
-                     rattata.isDead();
-                     ratIsDead();
-
-                 }
-
-                 dragonite.setCurrentTurn(false);
-                 rattata.setCurrentTurn(true);
-             }
-
-
-
-
-         }
-         if (rattata.getCurrentTurn() && !rattata.getDead()) {
-             if (e.getKey() == KeyboardEvent.KEY_Q) {
-
-                 soundFX();
-
-                 rattata.fang(dragonite);
-                 dragonite.getHpBar().grow(-rattata.getFang() / 3.5, 0);
-                 dragonite.getHpBar().translate(-rattata.getFang() / 3.5, 0);
-                 rattataMove();
-                 dragonite.getCurrentHpText().setText("" + dragonite.currentHP);
-                 game.getAttackText().setText("Rattata used Fang!");
-
-
-                 if (dragonite.currentHP <= 0) {
-                     dragonite.isDead();
-                     dragoniteIsDead();
-
-                 }
-
-                 rattata.setCurrentTurn(false);
-                 dragonite.setCurrentTurn(true);
-
-             }
-
-             if (e.getKey() == KeyboardEvent.KEY_W) {
-
-                 soundFX();
-
-                 rattata.hyperFang(dragonite);
-                 dragonite.getHpBar().grow(-rattata.getHyperFang() / 3.5, 0);
-                 dragonite.getHpBar().translate(-rattata.getHyperFang() / 3.5, 0);
-                 rattataMove();
-                 dragonite.getCurrentHpText().setText("" + dragonite.currentHP);
-                 game.getAttackText().setText("Rattata used Hyper Fang!");
-
-
-                 if (dragonite.currentHP <= 0) {
-                     dragonite.isDead();
-                     dragoniteIsDead();
-
-                 }
-
-                 rattata.setCurrentTurn(false);
-                 dragonite.setCurrentTurn(true);
-
-             }
-
-             if (e.getKey() == KeyboardEvent.KEY_E) {
-
-                 soundFX();
-
-                 rattata.tackle(dragonite);
-                 dragonite.getHpBar().grow(-rattata.getTackle() / 3.5, 0);
-                 dragonite.getHpBar().translate(-rattata.getTackle() / 3.5, 0);
-                 rattataMove();
-                 dragonite.getCurrentHpText().setText("" + dragonite.currentHP);
-                 game.getAttackText().setText("Rattata used Tackle!");
-
-
-                 if (dragonite.currentHP <= 0) {
-                     dragonite.isDead();
-                     dragoniteIsDead();
-
-                 }
-
-                 rattata.setCurrentTurn(false);
-                 dragonite.setCurrentTurn(true);
-
-             }
-
-             if (e.getKey() == KeyboardEvent.KEY_R) {
-                 rattataMove();
-                 soundFX();
-
-                 rattata.surf(dragonite);
-
-                 dragonite.getHpBar().grow(-rattata.getSurf() / 3.5, 0);
-                 dragonite.getHpBar().translate(-rattata.getSurf() / 3.5, 0);
-                 dragonite.getCurrentHpText().setText("" + dragonite.currentHP);
-                 game.getAttackText().setText("Rattata used Surf, somehow!");
-
-
-                 if (dragonite.currentHP <= 0) {
-                     dragonite.isDead();
-                     dragoniteIsDead();
-
-                 }
-
-                 rattata.setCurrentTurn(false);
-                 dragonite.setCurrentTurn(true);
-
-
-
-             }
-
-
-         }
-
-
-     }
     }
 
-    public void dragoniteIsDead(){
-        game.getAttackText().setText("Dragonite fainted!");
-        dragonite.getSprite().load("resources/dragoniteRip.png");
-        dragonite.getSprite().translate(30,100);
-        dragonite.getCurrentHpText().setText("000");
-    }
-
-    public void ratIsDead(){
-        game.getAttackText().setText("Ratatta fainted!");
-        rattata.getSprite().load("resources/ratRip.png");
-        rattata.getCurrentHpText().setText("000");
-
-    }
 
 
 
@@ -309,13 +162,7 @@ public class MyKeyboardHandle implements KeyboardHandler {
 
     }
 
-    public void setRattata(Rattata rattata) {
-     this.rattata = rattata;
-    }
 
-    public void setDragonite(Dragonite dragonite) {
-     this.dragonite = dragonite;
-    }
 
     public void setStartScreen(Picture picture){
         this.startScreen = picture;
@@ -354,17 +201,12 @@ public class MyKeyboardHandle implements KeyboardHandler {
         this.game = game;
     }
 
-
-    public void rattataMove(){
-        rattata.getSprite().translate(100,-100);
-        rattata.getSprite().translate(-100,100);
-
+    public void setP1(Pokemon p1) {
+        this.p1 = p1;
     }
 
-    public void dragoniteMove(){
-        dragonite.getSprite().translate(10,-10);
-        dragonite.getSprite().translate(-10,10);
-
+    public void setP2(Pokemon p2) {
+        this.p2 = p2;
     }
 
     private void delayMethod(int ms) {

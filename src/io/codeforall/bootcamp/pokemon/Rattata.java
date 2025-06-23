@@ -5,31 +5,34 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Rattata extends Pokemon{
 
-    private int fang;
-    private int tackle;
-    private int hyperFang;
-    private int surf;
+    private int attack1;
+    private int attack2;
+    private int attack3;
+    private int attack4;
     private boolean currentTurn = false;
 
     public Rattata(Picture fotoDoRato) {
 
         super(fotoDoRato);
 
-        this.fang = 70;
-        this.tackle =30;
-        this.hyperFang =120;
-        this.surf = 170;
+        this.attack1 = 70;
+        this.attack2 =30;
+        this.attack3 =120;
+        this.attack4 = 170;
 
     }
 
-    public void fang(Pokemon pokemon){
+    @Override
+    public void attack1(Pokemon pokemon){
 
         pokemon.currentHP -= fang;
         System.out.println("Rattata used fang");
         System.out.println("Dragonite HP: " + pokemon.currentHP + "\n");
 
     }
-    public void tackle (Pokemon pokemon){
+
+    @Override
+    public void attack2(Pokemon pokemon){
 
         pokemon.currentHP -= tackle;
         System.out.println("Rattata used tackle");
@@ -37,7 +40,8 @@ public class Rattata extends Pokemon{
 
     }
 
-    public void hyperFang (Pokemon pokemon){
+    @Override
+    public void attack3(Pokemon pokemon){
 
         pokemon.currentHP -= hyperFang;
         System.out.println("Rattata used Hyper Fang");
@@ -45,7 +49,8 @@ public class Rattata extends Pokemon{
 
     }
 
-    public void surf (Pokemon pokemon){
+    @Override
+    public void attack4(Pokemon pokemon){
 
         pokemon.currentHP -= surf;
 
@@ -76,15 +81,19 @@ public class Rattata extends Pokemon{
         return super.getHpBar();
     }
 
-    public int getFang() {
-        return fang;
+    public int getAttack1() {
+        return attack1;
     }
 
-    public int getHyperFang() {
-        return hyperFang;
+    public int getAttack2() {
+        return attack2;
     }
 
-    public int getTackle() {
-        return tackle;
+    public int getAttack3() {
+        return attack3;
+    }
+
+    public int getAttack4() {
+        return attack4;
     }
 }
