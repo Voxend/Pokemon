@@ -21,7 +21,7 @@ public class Game {
         this.picture = new Picture(10,10,"resources/image.png");
         picture.draw();
         keyboardHandle= new MyKeyboardHandle();
-        this.attackText = new Text(310, 470,"Dragonite is starting");
+        this.attackText = new Text(310, 470,"What will Dragonite do?");
 
     }
 
@@ -32,6 +32,8 @@ public class Game {
         p2.getSprite().draw();
         p2.getSprite().grow(-170,-170);
 
+
+        //p1
         Rectangle dragoniteHPbg = new Rectangle(630 , 484 , 500/1.75 , 38);
         dragoniteHPbg.fill();
         dragoniteHPbg.setColor(Color.GRAY);

@@ -146,7 +146,7 @@ public class MyKeyboardHandle implements KeyboardHandler {
                  rattata.getHpBar().translate(-dragonite.getWingAttack() / 3.5, 0);
                  dragoniteMove();
                  rattata.getCurrentHpText().setText("" + rattata.currentHP);
-                 game.getAttackText().setText("Dragonite used Wing attack!");
+                 game.getAttackText().setText("Dragonite used Wing Attack!");
 
 
                  if (rattata.currentHP <= 0) {
@@ -219,7 +219,7 @@ public class MyKeyboardHandle implements KeyboardHandler {
                  dragonite.getHpBar().translate(-rattata.getHyperFang() / 3.5, 0);
                  rattataMove();
                  dragonite.getCurrentHpText().setText("" + dragonite.currentHP);
-                 game.getAttackText().setText("Rattata used Hyperfang!");
+                 game.getAttackText().setText("Rattata used Hyper Fang!");
 
 
                  if (dragonite.currentHP <= 0) {
@@ -242,7 +242,7 @@ public class MyKeyboardHandle implements KeyboardHandler {
                  dragonite.getHpBar().translate(-rattata.getTackle() / 3.5, 0);
                  rattataMove();
                  dragonite.getCurrentHpText().setText("" + dragonite.currentHP);
-                 game.getAttackText().setText("Rattata used tackle!");
+                 game.getAttackText().setText("Rattata used Tackle!");
 
 
                  if (dragonite.currentHP <= 0) {
@@ -265,7 +265,7 @@ public class MyKeyboardHandle implements KeyboardHandler {
                  dragonite.getHpBar().grow(-rattata.getSurf() / 3.5, 0);
                  dragonite.getHpBar().translate(-rattata.getSurf() / 3.5, 0);
                  dragonite.getCurrentHpText().setText("" + dragonite.currentHP);
-                 game.getAttackText().setText("Rattata used surf!");
+                 game.getAttackText().setText("Rattata used Surf, somehow!");
 
 
                  if (dragonite.currentHP <= 0) {
