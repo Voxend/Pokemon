@@ -16,8 +16,6 @@ public abstract class Pokemon {
     private String attack3Name;
     private String attack4Name;
 
-
-
     private String name;
     private String type;
     int maxHP = 500;
@@ -26,8 +24,6 @@ public abstract class Pokemon {
     private boolean dead = false;
     private Rectangle hpBar;
     private Text currentHpText;
-
-
 
     public boolean isDead() {
 
@@ -62,7 +58,6 @@ public abstract class Pokemon {
         return hpBar;
     }
 
-
     public void setCurrentHpText(Text currentHpText) {
         this.currentHpText = currentHpText;
     }
@@ -70,8 +65,6 @@ public abstract class Pokemon {
     public Text getCurrentHpText() {
         return currentHpText;
     }
-
-
 
     public abstract void attack1(Pokemon pokemon);
     public abstract void attack2(Pokemon pokemon);
@@ -93,7 +86,6 @@ public abstract class Pokemon {
     public int getAttack4() {
         return attack4;
     }
-
 
     public String getAttack2Name() {
         return attack2Name;

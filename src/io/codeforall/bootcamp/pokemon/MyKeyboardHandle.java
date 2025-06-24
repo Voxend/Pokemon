@@ -1,6 +1,5 @@
 package io.codeforall.bootcamp.pokemon;
 
-
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -19,7 +18,6 @@ public class MyKeyboardHandle implements KeyboardHandler {
     private Pokemon p1;
     private Pokemon p2;
 
-
     public void init() {
 
         keyboard = new Keyboard(this);
@@ -30,7 +28,6 @@ public class MyKeyboardHandle implements KeyboardHandler {
         m.setKey(KeyboardEvent.KEY_M);
         m.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         keyboard.addEventListener((m));
-
 
         KeyboardEvent n = new KeyboardEvent();
         n.setKey(KeyboardEvent.KEY_N);
@@ -100,11 +97,13 @@ public class MyKeyboardHandle implements KeyboardHandler {
         if (!game.isStarted()) {
             if (e.getKey() == KeyboardEvent.KEY_SPACE) {
                 startScreen.delete();
+
                 game.setStarted(true);
             }
         } else {
             //p1
             if (!game.isP1Choosed()) {
+
                 if (e.getKey() == KeyboardEvent.KEY_1) {
                     game.setP1(new Charizard());
                     game.setP1Choosed(true);
@@ -132,21 +131,29 @@ public class MyKeyboardHandle implements KeyboardHandler {
                     game.setP2(new Charizard());
                     game.setP2Choosed(true);
                     game.drawCharizardBack();
+                    game.getChoosingScreen().delete();
                 }
                 if (e.getKey() == KeyboardEvent.KEY_2) {
                     game.setP2(new Dragonite());
                     game.setP2Choosed(true);
                     game.drawDraganiteBack();
+                    game.getChoosingScreen().delete();
+
                 }
                 if (e.getKey() == KeyboardEvent.KEY_3) {
+                    delayMethod(2000);
                     game.setP2(new Gyarados());
                     game.setP2Choosed(true);
                     game.drawGyaradosBack();
+                    game.getChoosingScreen().delete();
                 }
                 if (e.getKey() == KeyboardEvent.KEY_4) {
+                    delayMethod(2000);
                     game.setP2(new Eliasmon());
                     game.setP2Choosed(true);
                     game.drawEliasmonBack();
+                    game.getChoosingScreen().delete();
+
                 }
             } else if (game.isP1Choosed() && game.isP2Choosed()) {
 
@@ -215,21 +222,14 @@ public class MyKeyboardHandle implements KeyboardHandler {
                         game.setP2Turn(false);
 
                     }
-
                 }
             }
-
-
         }
-
     }
-
 
     @Override
     public void keyReleased(KeyboardEvent e) {
-
     }
-
 
     public void setStartScreen(Picture picture) {
         this.startScreen = picture;
@@ -284,6 +284,4 @@ public class MyKeyboardHandle implements KeyboardHandler {
             e.printStackTrace();
         }
     }
-
-
 }

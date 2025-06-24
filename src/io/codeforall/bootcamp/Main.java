@@ -25,15 +25,11 @@ public class Main {
         //Images
         Picture startScreen = new Picture(10,10,"resources/StartScreen.png");
 
-
-
-
         //Keyboard Functionality
         MyKeyboardHandle keyboardHandle = new MyKeyboardHandle();
         keyboardHandle.init();
 
         //Pokémon Game Start
-
 
         keyboardHandle.setStartScreen(startScreen);
 
@@ -45,17 +41,5 @@ public class Main {
         keyboardHandle.setP1(game1.getP1());
         keyboardHandle.setP2(game1.getP2());
 
-
-//        if (dragonite.getDead() || rattata.getDead()) {
-//
-//            clip.stop();
-//
-//            AudioInputStream victoryStream = AudioSystem.getAudioInputStream(victorySong);
-//            Clip victory = AudioSystem.getClip();
-//            victory.open(victoryStream);
-//
-//            victory.start();
-//
-//        }
     }
 }

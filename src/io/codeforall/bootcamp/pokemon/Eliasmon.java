@@ -12,7 +12,6 @@ public class Eliasmon extends Pokemon{
     private String attack3Name;
     private String attack4Name;
 
-
     private boolean currentTurn = true;
 
     public Eliasmon(){
@@ -37,8 +36,6 @@ public class Eliasmon extends Pokemon{
         System.out.println("Dragonite used Outrage");
 
         System.out.println("Charizard HP: " + pokemon.currentHP + "\n");
-
-
     }
 
     @Override
@@ -48,7 +45,6 @@ public class Eliasmon extends Pokemon{
 
         System.out.println("Dragonite used Hurricane");
         System.out.println("Charizard HP: " + pokemon.currentHP + "\n");
-
     }
 
     @Override
@@ -108,7 +104,6 @@ public class Eliasmon extends Pokemon{
     public String getAttack4Name() {
         return attack4Name;
     }
-
 
     @Override
     public String toString(){

@@ -11,7 +11,6 @@ public class Gyarados extends Pokemon{
     private String attack3Name;
     private String attack4Name;
 
-
     private boolean currentTurn = true;
 
     public Gyarados(){
@@ -107,7 +106,6 @@ public class Gyarados extends Pokemon{
     public String getAttack4Name() {
         return attack4Name;
     }
-
 
     @Override
     public String toString(){

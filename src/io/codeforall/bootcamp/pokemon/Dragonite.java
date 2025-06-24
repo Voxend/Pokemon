@@ -14,7 +14,6 @@ public class Dragonite extends Pokemon {
     private String attack3Name;
     private String attack4Name;
 
-
     private boolean currentTurn = true;
 
     public Dragonite(){
@@ -39,7 +38,6 @@ public class Dragonite extends Pokemon {
         System.out.println("Dragonite used Outrage");
 
         System.out.println("Charizard HP: " + pokemon.currentHP + "\n");
-
 
     }
 
@@ -111,10 +109,8 @@ public class Dragonite extends Pokemon {
         return attack4Name;
     }
 
-
     @Override
     public String toString(){
         return "Dragonite";
     }
-
 }

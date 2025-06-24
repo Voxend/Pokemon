@@ -22,6 +22,7 @@ public class Game {
     private Rectangle p2Hpbar;
     private Text currentHPp1;
     private Text currentHPp2;
+     private Picture choosingScreen = new Picture(10, 10, "resources/P1.png");
 
     public Game() {
 
@@ -98,27 +99,6 @@ public class Game {
         currentHPp2.draw();
         currentHPp2.grow(10,15);
 
-//        if(p2 instanceof Dragonite){
-//            Picture p1Sprite = new Picture(550,40,"resources/dragonite_front.png");
-//            p1Sprite.draw();
-//        }
-//
-//        if(p2 instanceof Gyarados){
-//            Picture p1Sprite = new Picture(550,40,"resources/gyarados_front.png");
-//            p1Sprite.draw();
-//        }
-//
-//        if(p2 instanceof Charizard){
-//            Picture p1Sprite = new Picture(550,40,"resources/charizard.png");
-//            p1Sprite.draw();
-//        }
-//        if(p2 instanceof Eliasmon){
-//            Picture p1Sprite = new Picture(550,40,"resources/ratoAgain.png");
-//            p1Sprite.draw();
-//        }
-
-
-
         //TEXT BOX
         Picture textBox = new Picture(130,400, "resources/textbox.png");
         textBox.draw();
@@ -128,6 +108,7 @@ public class Game {
         attackText.grow(70,30);
         attackText.translate(0,30);
 
+        choosingScreen.draw();
 
     }
 
@@ -275,45 +256,44 @@ public class Game {
     }
 
     public void drawDraganiteFront(){
-        Picture p1Sprite = new Picture(150,100,"resources/dragonite_back.png");
+        Picture p1Sprite = new Picture(100,100,"resources/dragonite_back.png");
         p1Sprite.draw();
     }
 
     public void drawCharizardFront(){
-        Picture p1Sprite = new Picture(150,100,"resources/charizard_back_gif.png");
+        Picture p1Sprite = new Picture(100,100,"resources/charizard_back_gif.png");
         p1Sprite.draw();
     }
 
     public void drawGyaradosFront(){
-        Picture p1Sprite = new Picture(150,100,"resources/gyarados_back.png");
+        Picture p1Sprite = new Picture(100,100,"resources/gyarados_back.png");
         p1Sprite.draw();
     }
 
     public void drawEliasmonFront(){
-        Picture p1Sprite = new Picture(150,100,"resources/ratRip.png");
+        Picture p1Sprite = new Picture(100,100,"resources/ratRip.png");
         p1Sprite.draw();
     }
 
     public void drawDraganiteBack(){
-        Picture p2Sprite = new Picture(550,40,"resources/dragonite_front.png");
+        Picture p2Sprite = new Picture(600,40,"resources/dragonite_front.png");
         p2Sprite.draw();
     }
 
     public void drawCharizardBack(){
-        Picture p2Sprite = new Picture(550,40,"resources/charizard_front.png");
+        Picture p2Sprite = new Picture(600,30,"resources/charizard_front.png");
         p2Sprite.draw();
     }
 
     public void drawGyaradosBack(){
-        Picture p2Sprite = new Picture(550,40,"resources/gyarados_front.png");
+        Picture p2Sprite = new Picture(600,40,"resources/gyarados_front.png");
         p2Sprite.draw();
     }
 
     public void drawEliasmonBack(){
-        Picture p2Sprite = new Picture(550,40,"resources/ratRip.png");
+        Picture p2Sprite = new Picture(600,40,"resources/ratRip.png");
         p2Sprite.draw();
     }
-
 
     public void setStarted(boolean started) {
         isStarted = started;
@@ -373,5 +353,9 @@ public class Game {
 
     public void setP2Choosed(boolean p2Choosed) {
         this.p2Choosed = p2Choosed;
+    }
+
+    public Picture getChoosingScreen() {
+        return choosingScreen;
     }
 }
