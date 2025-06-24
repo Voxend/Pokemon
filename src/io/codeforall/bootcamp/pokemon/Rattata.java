@@ -25,7 +25,7 @@ public class Rattata extends Pokemon{
     @Override
     public void attack1(Pokemon pokemon){
 
-        pokemon.currentHP -= fang;
+        pokemon.currentHP -= attack1;
         System.out.println("Rattata used fang");
         System.out.println("Dragonite HP: " + pokemon.currentHP + "\n");
 
@@ -34,7 +34,7 @@ public class Rattata extends Pokemon{
     @Override
     public void attack2(Pokemon pokemon){
 
-        pokemon.currentHP -= tackle;
+        pokemon.currentHP -= attack2;
         System.out.println("Rattata used tackle");
         System.out.println("Dragonite HP: " + pokemon.currentHP + "\n");
 
@@ -43,7 +43,7 @@ public class Rattata extends Pokemon{
     @Override
     public void attack3(Pokemon pokemon){
 
-        pokemon.currentHP -= hyperFang;
+        pokemon.currentHP -= attack3;
         System.out.println("Rattata used Hyper Fang");
         System.out.println("Dragonite HP: " + pokemon.currentHP + "\n");
 
@@ -52,7 +52,7 @@ public class Rattata extends Pokemon{
     @Override
     public void attack4(Pokemon pokemon){
 
-        pokemon.currentHP -= surf;
+        pokemon.currentHP -= attack4;
 
         System.out.println("Rattata used Surf");
         System.out.println("Dragonite HP: " + pokemon.currentHP +"\n");
@@ -67,9 +67,9 @@ public class Rattata extends Pokemon{
         this.currentTurn = turn;
     }
 
-    public int getSurf() {
-        return surf;
-    }
+//    public int getSurf() {
+//        return surf;
+//    }
 
     @Override
     public void setHpBar(Rectangle hpBar) {

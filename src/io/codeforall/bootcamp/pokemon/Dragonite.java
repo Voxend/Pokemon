@@ -24,7 +24,7 @@ public class Dragonite extends Pokemon {
     @Override
     public void attack1(Pokemon pokemon){
 
-        pokemon.currentHP -= outrage;
+        pokemon.currentHP -= attack1;
          
         System.out.println("Dragonite used Outrage");
 
@@ -35,7 +35,7 @@ public class Dragonite extends Pokemon {
     @Override
     public void attack2(Pokemon pokemon){
 
-      pokemon.currentHP -= hurricane;
+      pokemon.currentHP -= attack2;
 
         System.out.println("Dragonite used Hurricane");
         System.out.println("Rattata HP: " + pokemon.currentHP + "\n");
@@ -45,7 +45,7 @@ public class Dragonite extends Pokemon {
     @Override
     public void  attack3(Pokemon pokemon){
 
-        pokemon.currentHP -= wingAttack;
+        pokemon.currentHP -= attack3;
         System.out.println("Dragonite used Wing Attack");
         System.out.println("Rattata HP: " + pokemon.currentHP + "\n");
 
@@ -54,7 +54,7 @@ public class Dragonite extends Pokemon {
     @Override
     public void attack4(Pokemon pokemon){
 
-        pokemon.currentHP -= tackle;
+        pokemon.currentHP -= attack4;
         System.out.println("Dragonite used Tackle");
         System.out.println("Rattata HP: " + pokemon.currentHP + "\n");
 

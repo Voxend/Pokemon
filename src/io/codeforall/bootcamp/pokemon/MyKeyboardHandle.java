@@ -90,24 +90,31 @@ public class MyKeyboardHandle implements KeyboardHandler {
 
             if ((game.isP1Turn() && !p1.getDead())) {
                 if (e.getKey() == KeyboardEvent.KEY_M) {
+
+
+
+                    soundFX();
                     game.p1Attack1();
                     game.setP1Turn(false);
                     game.setP2Turn(true);
                 }
 
                 if (e.getKey() == KeyboardEvent.KEY_N) {
+                    soundFX();
                     game.p1Attack2();
                     game.setP1Turn(false);
                     game.setP2Turn(true);
                 }
 
                 if (e.getKey() == KeyboardEvent.KEY_B) {
+                    soundFX();
                     game.p1Attack3();
                     game.setP1Turn(false);
                     game.setP2Turn(true);
                 }
 
                 if (e.getKey() == KeyboardEvent.KEY_V) {
+                    soundFX();
                     game.p1Attack4();
                     game.setP1Turn(false);
                     game.setP2Turn(true);
@@ -117,6 +124,7 @@ public class MyKeyboardHandle implements KeyboardHandler {
             }
             if (game.isP2Turn() && !p2.getDead()) {
                 if (e.getKey() == KeyboardEvent.KEY_Q) {
+                    soundFX();
                     game.p2Attack1();
                     game.setP1Turn(true);
                     game.setP2Turn(false);
@@ -124,14 +132,15 @@ public class MyKeyboardHandle implements KeyboardHandler {
                 }
 
                 if (e.getKey() == KeyboardEvent.KEY_W) {
+                    soundFX();
                     game.p2Attack2();
                     game.setP1Turn(true);
                     game.setP2Turn(false);
 
-
                 }
 
                 if (e.getKey() == KeyboardEvent.KEY_E) {
+                    soundFX();
                     game.p2Attack3();
                     game.setP1Turn(true);
                     game.setP2Turn(false);
@@ -139,10 +148,10 @@ public class MyKeyboardHandle implements KeyboardHandler {
                 }
 
                 if (e.getKey() == KeyboardEvent.KEY_R) {
+                    soundFX();
                     game.p2Attack4();
                     game.setP1Turn(true);
                     game.setP2Turn(false);
-
 
                 }
 

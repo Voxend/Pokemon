@@ -18,6 +18,8 @@ public class Game {
 
     private Rectangle p1Hpbar;
     private Rectangle p2Hpbar;
+    private Text currentHPp1;
+    private Text currentHPp2;
 
     public Game(Pokemon p1,Pokemon p2) {
 
@@ -55,10 +57,9 @@ public class Game {
         maxHpDrag.draw();
         maxHpDrag.grow(10,15);
 
-        Text currentHpDrag = new Text(946,501,"500");
-        p1.setCurrentHpText(currentHpDrag);
-        currentHpDrag.draw();
-        currentHpDrag.grow(10,15);
+        currentHPp1 = new Text(946,501,"500");
+        currentHPp1.draw();
+        currentHPp1.grow(10,15);
 
 
         //P2
@@ -79,10 +80,9 @@ public class Game {
         maxHpRat.draw();
         maxHpRat.grow(10,15);
 
-        Text currentHpRat = new Text(394,41,"500");
-        p2.setCurrentHpText(currentHpRat);
-        currentHpRat.draw();
-        currentHpRat.grow(10,15);
+        currentHPp2 = new Text(394,41,"500");
+        currentHPp2.draw();
+        currentHPp2.grow(10,15);
 
 
 
@@ -91,7 +91,6 @@ public class Game {
         textBox.draw();
         attackText.draw();
         attackText.grow(70,30);
-
 
 
 
@@ -110,6 +109,8 @@ public class Game {
 
         p2Hpbar.grow(-p1.getAttack1()/3.5,0);
         p2Hpbar.translate(-p1.getAttack1()/3.5,0);
+
+        currentHPp2.setText("" + (p2.currentHP));
     }
 
     public void p1Attack2(){
@@ -117,8 +118,8 @@ public class Game {
         if(p2.currentHP <= 0){
             p2.isDead();
         }
-        p2Hpbar.grow(-120/3.5,0);
-        p2Hpbar.translate(-120/3.5,0);
+        p2Hpbar.grow(-p1.getAttack2()/3.5,0);
+        p2Hpbar.translate(-p1.getAttack2()/3.5,0);
     }
 
     public void p1Attack3(){
@@ -126,8 +127,8 @@ public class Game {
         if(p2.currentHP <= 0){
             p2.isDead();
         }
-        p2Hpbar.grow(-120/3.5,0);
-        p2Hpbar.translate(-120/3.5,0);
+        p2Hpbar.grow(-p1.getAttack3()/3.5,0);
+        p2Hpbar.translate(-p1.getAttack3()/3.5,0);
     }
 
     public void p1Attack4(){
@@ -135,8 +136,8 @@ public class Game {
         if(p2.currentHP <= 0){
             p2.isDead();
         }
-        p2Hpbar.grow(-120/3.5,0);
-        p2Hpbar.translate(-120/3.5,0);
+        p2Hpbar.grow(-p1.getAttack4()/3.5,0);
+        p2Hpbar.translate(-p1.getAttack4()/3.5,0);
     }
 
     public void p2Attack1(){
@@ -144,6 +145,8 @@ public class Game {
         if(p1.currentHP <= 0){
             p1.isDead();
         }
+        p1Hpbar.grow(-p2.getAttack1()/3.5,0);
+        p1Hpbar.translate(p2.getAttack1()/3.5,0);
     }
 
     public void p2Attack2(){
@@ -151,6 +154,8 @@ public class Game {
         if(p1.currentHP <= 0){
             p1.isDead();
         }
+        p1Hpbar.grow(-p2.getAttack2()/3.5,0);
+        p1Hpbar.translate(p2.getAttack2()/3.5,0);
     }
 
     public void p2Attack3(){
@@ -158,6 +163,8 @@ public class Game {
         if(p1.currentHP <= 0){
             p1.isDead();
         }
+        p1Hpbar.grow(-p2.getAttack3()/3.5,0);
+        p1Hpbar.translate(p2.getAttack3()/3.5,0);
     }
 
     public void p2Attack4(){
@@ -165,10 +172,9 @@ public class Game {
         if(p1.currentHP <= 0){
             p1.isDead();
         }
+        p1Hpbar.grow(-p2.getAttack4()/3.5,0);
+        p1Hpbar.translate(p2.getAttack4()/3.5,0);
     }
-
-
-
 
 
     public void setStarted(boolean started) {
