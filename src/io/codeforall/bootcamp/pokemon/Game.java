@@ -15,16 +15,17 @@ public class Game {
     private Text attackText;
     private boolean p1Turn = true;
     private boolean p2Turn = false;
+    private boolean p1Choosed = false;
+    private boolean p2Choosed = false;
 
     private Rectangle p1Hpbar;
     private Rectangle p2Hpbar;
     private Text currentHPp1;
     private Text currentHPp2;
 
-    public Game(Pokemon p1,Pokemon p2) {
+    public Game() {
 
-        this.p1 = p1;
-        this.p2 = p2;
+
         this.picture = new Picture(10,10,"resources/image.png");
         picture.draw();
 
@@ -33,12 +34,6 @@ public class Game {
     }
 
     public void init(){
-
-        p1.getSprite().draw();
-        p1.getSprite().grow(-20,-20);
-        p2.getSprite().draw();
-        p2.getSprite().grow(-170,-170);
-
 
         //p1
         Rectangle dragoniteHPbg = new Rectangle(630 , 484 , 500/1.75 , 38);
@@ -60,6 +55,25 @@ public class Game {
         currentHPp1 = new Text(946,501,"500");
         currentHPp1.draw();
         currentHPp1.grow(10,15);
+
+        if(p1 instanceof Dragonite){
+            Picture p1Sprite = new Picture(150,100,"resources/dragonite_back.png");
+            p1Sprite.draw();
+        }
+
+        if(p1 instanceof Gyarados){
+            Picture p1Sprite = new Picture(150,100,"resources/gyarados_back.png");
+            p1Sprite.draw();
+        }
+
+        if(p1 instanceof Charizard){
+            Picture p1Sprite = new Picture(150,100,"resources/charizard_back_gif.png");
+            p1Sprite.draw();
+        }
+        if(p1 instanceof Eliasmon){
+            Picture p1Sprite = new Picture(150,100,"resources/ratoAgain.png");
+            p1Sprite.draw();
+        }
 
 
         //P2
@@ -84,19 +98,35 @@ public class Game {
         currentHPp2.draw();
         currentHPp2.grow(10,15);
 
+//        if(p2 instanceof Dragonite){
+//            Picture p1Sprite = new Picture(550,40,"resources/dragonite_front.png");
+//            p1Sprite.draw();
+//        }
+//
+//        if(p2 instanceof Gyarados){
+//            Picture p1Sprite = new Picture(550,40,"resources/gyarados_front.png");
+//            p1Sprite.draw();
+//        }
+//
+//        if(p2 instanceof Charizard){
+//            Picture p1Sprite = new Picture(550,40,"resources/charizard.png");
+//            p1Sprite.draw();
+//        }
+//        if(p2 instanceof Eliasmon){
+//            Picture p1Sprite = new Picture(550,40,"resources/ratoAgain.png");
+//            p1Sprite.draw();
+//        }
+
 
 
         //TEXT BOX
         Picture textBox = new Picture(130,400, "resources/textbox.png");
         textBox.draw();
+        textBox.grow(0,-30);
+        textBox.translate(0,30);
         attackText.draw();
         attackText.grow(70,30);
-
-
-
-
-
-
+        attackText.translate(0,30);
 
 
     }
@@ -105,75 +135,183 @@ public class Game {
         p1.attack1(p2);
         if(p2.currentHP <= 0){
             p2.isDead();
-        }
+            currentHPp2.setText("000");
 
+        }
         p2Hpbar.grow(-p1.getAttack1()/3.5,0);
         p2Hpbar.translate(-p1.getAttack1()/3.5,0);
-
-        currentHPp2.setText("" + (p2.currentHP));
+        if (p2.currentHP>0) {
+            currentHPp2.setText("" + (p2.currentHP));
+        }
+        if (p2.currentHP<100 && p2.currentHP>0) {
+            currentHPp2.setText("0" + (p2.currentHP));
+        }
+        attackText.setText("" + p1 + " used " + p1.getAttack1Name());
     }
 
     public void p1Attack2(){
         p1.attack2(p2);
         if(p2.currentHP <= 0){
             p2.isDead();
+            currentHPp2.setText("000");
         }
         p2Hpbar.grow(-p1.getAttack2()/3.5,0);
         p2Hpbar.translate(-p1.getAttack2()/3.5,0);
+        if (p2.currentHP>0) {
+            currentHPp2.setText("" + (p2.currentHP));
+        }
+        if (p2.currentHP<100 && p2.currentHP>0) {
+            currentHPp2.setText("0" + (p2.currentHP));
+        }
+        attackText.setText("" + p1 + " used " + p1.getAttack2Name());
     }
 
     public void p1Attack3(){
         p1.attack3(p2);
         if(p2.currentHP <= 0){
             p2.isDead();
+            currentHPp2.setText("000");
+
         }
         p2Hpbar.grow(-p1.getAttack3()/3.5,0);
         p2Hpbar.translate(-p1.getAttack3()/3.5,0);
+        if (p2.currentHP>0) {
+            currentHPp2.setText("" + (p2.currentHP));
+        }
+        if (p2.currentHP<100 && p2.currentHP>0) {
+            currentHPp2.setText("0" + (p2.currentHP));
+        }
+        attackText.setText("" + p1 + " used " + p1.getAttack3Name());
     }
 
     public void p1Attack4(){
         p1.attack4(p2);
         if(p2.currentHP <= 0){
             p2.isDead();
+            currentHPp2.setText("000");
+
         }
         p2Hpbar.grow(-p1.getAttack4()/3.5,0);
         p2Hpbar.translate(-p1.getAttack4()/3.5,0);
+        if (p2.currentHP>0) {
+            currentHPp2.setText("" + (p2.currentHP));
+        }
+        if (p2.currentHP<100 && p2.currentHP>0) {
+            currentHPp2.setText("0" + (p2.currentHP));
+        }
+        attackText.setText("" + p1 + " used " + p1.getAttack4Name());
     }
 
     public void p2Attack1(){
         p2.attack1(p1);
         if(p1.currentHP <= 0){
             p1.isDead();
+            currentHPp1.setText("000");
+
         }
         p1Hpbar.grow(-p2.getAttack1()/3.5,0);
         p1Hpbar.translate(p2.getAttack1()/3.5,0);
+        if (p1.currentHP>0) {
+            currentHPp1.setText("" + (p1.currentHP));
+        }
+        if (p1.currentHP<100 && p1.currentHP>0) {
+            currentHPp1.setText("0" + (p1.currentHP));
+        }
+        attackText.setText("" + p2 + " used " + p2.getAttack1Name());
     }
 
     public void p2Attack2(){
         p2.attack2(p1);
         if(p1.currentHP <= 0){
             p1.isDead();
+            currentHPp1.setText("000");
+
         }
         p1Hpbar.grow(-p2.getAttack2()/3.5,0);
         p1Hpbar.translate(p2.getAttack2()/3.5,0);
+        if (p1.currentHP>0) {
+            currentHPp1.setText("" + (p1.currentHP));
+        }
+        if (p1.currentHP<100 && p1.currentHP>0) {
+            currentHPp1.setText("0" + (p1.currentHP));
+        }
+        attackText.setText("" + p2 + " used " + p2.getAttack2Name());
     }
 
     public void p2Attack3(){
         p2.attack3(p1);
         if(p1.currentHP <= 0){
             p1.isDead();
+            currentHPp1.setText("000");
+
         }
         p1Hpbar.grow(-p2.getAttack3()/3.5,0);
         p1Hpbar.translate(p2.getAttack3()/3.5,0);
+        if (p1.currentHP>0) {
+            currentHPp1.setText("" + (p1.currentHP));
+        }
+        if (p1.currentHP<100 && p1.currentHP>0) {
+            currentHPp1.setText("0" + (p1.currentHP));
+        }
+        attackText.setText("" + p2 + " used " + p2.getAttack3Name());
     }
 
     public void p2Attack4(){
         p2.attack4(p1);
         if(p1.currentHP <= 0){
             p1.isDead();
+            currentHPp1.setText("000");
+
         }
         p1Hpbar.grow(-p2.getAttack4()/3.5,0);
         p1Hpbar.translate(p2.getAttack4()/3.5,0);
+        if (p1.currentHP>0) {
+            currentHPp1.setText("" + (p1.currentHP));
+        }
+        if (p1.currentHP<100 && p1.currentHP>0) {
+            currentHPp1.setText("0" + (p1.currentHP));
+        }
+        attackText.setText("" + p2 + " used " + p2.getAttack4Name());
+    }
+
+    public void drawDraganiteFront(){
+        Picture p1Sprite = new Picture(150,100,"resources/dragonite_back.png");
+        p1Sprite.draw();
+    }
+
+    public void drawCharizardFront(){
+        Picture p1Sprite = new Picture(150,100,"resources/charizard_back_gif.png");
+        p1Sprite.draw();
+    }
+
+    public void drawGyaradosFront(){
+        Picture p1Sprite = new Picture(150,100,"resources/gyarados_back.png");
+        p1Sprite.draw();
+    }
+
+    public void drawEliasmonFront(){
+        Picture p1Sprite = new Picture(150,100,"resources/ratRip.png");
+        p1Sprite.draw();
+    }
+
+    public void drawDraganiteBack(){
+        Picture p2Sprite = new Picture(550,40,"resources/dragonite_front.png");
+        p2Sprite.draw();
+    }
+
+    public void drawCharizardBack(){
+        Picture p2Sprite = new Picture(550,40,"resources/charizard_front.png");
+        p2Sprite.draw();
+    }
+
+    public void drawGyaradosBack(){
+        Picture p2Sprite = new Picture(550,40,"resources/gyarados_front.png");
+        p2Sprite.draw();
+    }
+
+    public void drawEliasmonBack(){
+        Picture p2Sprite = new Picture(550,40,"resources/ratRip.png");
+        p2Sprite.draw();
     }
 
 
@@ -219,5 +357,21 @@ public class Game {
 
     public void setP2Turn(boolean p2Turn) {
         this.p2Turn = p2Turn;
+    }
+
+    public boolean isP1Choosed() {
+        return p1Choosed;
+    }
+
+    public void setP1Choosed(boolean p1Choosed) {
+        this.p1Choosed = p1Choosed;
+    }
+
+    public boolean isP2Choosed() {
+        return p2Choosed;
+    }
+
+    public void setP2Choosed(boolean p2Choosed) {
+        this.p2Choosed = p2Choosed;
     }
 }

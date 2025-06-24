@@ -5,11 +5,7 @@ import java.io.IOException;
 import javax.sound.sampled.*;
 
 import io.codeforall.bootcamp.pokemon.*;
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
-
-import java.awt.*;
 
 public class Main {
 
@@ -29,20 +25,19 @@ public class Main {
         //Images
         Picture startScreen = new Picture(10,10,"resources/StartScreen.png");
 
-        Picture sprite = new Picture(150, 100, "resources/dragonite sprites.png");
-        Picture fotoDoRato = new Picture(450, -20, "resources/ratoAgain.png");
+
+
 
         //Keyboard Functionality
         MyKeyboardHandle keyboardHandle = new MyKeyboardHandle();
         keyboardHandle.init();
 
         //Pokémon Game Start
-        Dragonite dragonite = new Dragonite(sprite);
-        Rattata rattata = new Rattata(fotoDoRato);
+
 
         keyboardHandle.setStartScreen(startScreen);
 
-        Game game1= new Game(dragonite,rattata);
+        Game game1= new Game();
 
         game1.init();
         startScreen.draw();

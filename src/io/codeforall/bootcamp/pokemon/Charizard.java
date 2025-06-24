@@ -1,24 +1,32 @@
 package io.codeforall.bootcamp.pokemon;
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
-import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-public class Rattata extends Pokemon{
+public class Charizard extends Pokemon{
 
     private int attack1;
     private int attack2;
     private int attack3;
     private int attack4;
+
+    private String attack1Name;
+    private String attack2Name;
+    private String attack3Name;
+    private String attack4Name;
+
     private boolean currentTurn = false;
 
-    public Rattata(Picture fotoDoRato) {
-
-        super(fotoDoRato);
+    public Charizard() {
 
         this.attack1 = 70;
         this.attack2 =30;
         this.attack3 =120;
         this.attack4 = 170;
+
+        this.attack1Name = "Outrage";
+        this.attack2Name = "Outrage";
+        this.attack3Name = "Outrage";
+        this.attack4Name = "Outrage";
 
     }
 
@@ -26,7 +34,7 @@ public class Rattata extends Pokemon{
     public void attack1(Pokemon pokemon){
 
         pokemon.currentHP -= attack1;
-        System.out.println("Rattata used fang");
+        System.out.println("Charizard used fang");
         System.out.println("Dragonite HP: " + pokemon.currentHP + "\n");
 
     }
@@ -35,7 +43,7 @@ public class Rattata extends Pokemon{
     public void attack2(Pokemon pokemon){
 
         pokemon.currentHP -= attack2;
-        System.out.println("Rattata used tackle");
+        System.out.println("Charizard used tackle");
         System.out.println("Dragonite HP: " + pokemon.currentHP + "\n");
 
     }
@@ -44,7 +52,7 @@ public class Rattata extends Pokemon{
     public void attack3(Pokemon pokemon){
 
         pokemon.currentHP -= attack3;
-        System.out.println("Rattata used Hyper Fang");
+        System.out.println("Charizard used Hyper Fang");
         System.out.println("Dragonite HP: " + pokemon.currentHP + "\n");
 
     }
@@ -54,7 +62,7 @@ public class Rattata extends Pokemon{
 
         pokemon.currentHP -= attack4;
 
-        System.out.println("Rattata used Surf");
+        System.out.println("Charizard used Surf");
         System.out.println("Dragonite HP: " + pokemon.currentHP +"\n");
 
     }
@@ -95,5 +103,25 @@ public class Rattata extends Pokemon{
 
     public int getAttack4() {
         return attack4;
+    }
+    public String getAttack2Name() {
+        return attack2Name;
+    }
+
+    public String getAttack1Name() {
+        return attack1Name;
+    }
+
+    public String getAttack3Name() {
+        return attack3Name;
+    }
+
+    public String getAttack4Name() {
+        return attack4Name;
+    }
+
+    @Override
+    public String toString(){
+        return "Charizard";
     }
 }

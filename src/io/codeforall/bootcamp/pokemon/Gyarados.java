@@ -1,9 +1,6 @@
 package io.codeforall.bootcamp.pokemon;
 
-import org.academiadecodigo.simplegraphics.pictures.Picture;
-
-public class Dragonite extends Pokemon {
-
+public class Gyarados extends Pokemon{
     private int attack1;
     private int attack2;
     private int attack3;
@@ -17,7 +14,7 @@ public class Dragonite extends Pokemon {
 
     private boolean currentTurn = true;
 
-    public Dragonite(){
+    public Gyarados(){
 
         this.attack1 = 120;
         this.attack2 = 85;
@@ -35,7 +32,7 @@ public class Dragonite extends Pokemon {
     public void attack1(Pokemon pokemon){
 
         pokemon.currentHP -= attack1;
-         
+
         System.out.println("Dragonite used Outrage");
 
         System.out.println("Charizard HP: " + pokemon.currentHP + "\n");
@@ -46,7 +43,7 @@ public class Dragonite extends Pokemon {
     @Override
     public void attack2(Pokemon pokemon){
 
-      pokemon.currentHP -= attack2;
+        pokemon.currentHP -= attack2;
 
         System.out.println("Dragonite used Hurricane");
         System.out.println("Charizard HP: " + pokemon.currentHP + "\n");
@@ -69,14 +66,14 @@ public class Dragonite extends Pokemon {
         System.out.println("Dragonite used Tackle");
         System.out.println("Charizard HP: " + pokemon.currentHP + "\n");
 
-   }
+    }
 
     public boolean getCurrentTurn() {
         return currentTurn;
     }
 
     public void setCurrentTurn(boolean turn){
-           this.currentTurn = turn;
+        this.currentTurn = turn;
     }
 
     public int getAttack1() {
@@ -114,7 +111,6 @@ public class Dragonite extends Pokemon {
 
     @Override
     public String toString(){
-        return "Dragonite";
+        return "Gyarados";
     }
-
 }

@@ -11,6 +11,11 @@ public abstract class Pokemon {
     private int attack3;
     private int attack4;
 
+    private String attack1Name;
+    private String attack2Name;
+    private String attack3Name;
+    private String attack4Name;
+
 
 
     private String name;
@@ -22,10 +27,7 @@ public abstract class Pokemon {
     private Rectangle hpBar;
     private Text currentHpText;
 
-    public Pokemon(Picture sprite) {
-        this.sprite = sprite;
 
-    }
 
     public boolean isDead() {
 
@@ -90,5 +92,22 @@ public abstract class Pokemon {
 
     public int getAttack4() {
         return attack4;
+    }
+
+
+    public String getAttack2Name() {
+        return attack2Name;
+    }
+
+    public String getAttack1Name() {
+        return attack1Name;
+    }
+
+    public String getAttack3Name() {
+        return attack3Name;
+    }
+
+    public String getAttack4Name() {
+        return attack4Name;
     }
 }
