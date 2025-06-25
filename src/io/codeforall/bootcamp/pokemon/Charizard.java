@@ -1,6 +1,7 @@
 package io.codeforall.bootcamp.pokemon;
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Charizard extends Pokemon{
 
@@ -14,19 +15,24 @@ public class Charizard extends Pokemon{
     private String attack3Name;
     private String attack4Name;
 
+    private String name = "Charizard";
+    private Picture sprite;
+
     private boolean currentTurn = false;
 
     public Charizard() {
 
-        this.attack1 = 70;
-        this.attack2 =30;
-        this.attack3 =120;
-        this.attack4 = 170;
+        sprite =  new Picture(450,100,"resources/charizard_front.png");
 
-        this.attack1Name = "Outrage";
-        this.attack2Name = "Outrage";
-        this.attack3Name = "Outrage";
-        this.attack4Name = "Outrage";
+        this.attack1 = 80;
+        this.attack2 = 70;
+        this.attack3 = 150;
+        this.attack4 = 110;
+
+        this.attack1Name = "Flamethrower";
+        this.attack2Name = "Fly";
+        this.attack3Name = "Blast Burn";
+        this.attack4Name = "Fire Blast";
 
     }
 
@@ -118,6 +124,11 @@ public class Charizard extends Pokemon{
 
     public String getAttack4Name() {
         return attack4Name;
+    }
+
+    @Override
+    public Picture getSprite() {
+        return sprite;
     }
 
     @Override

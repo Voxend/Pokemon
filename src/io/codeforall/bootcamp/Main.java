@@ -11,16 +11,17 @@ public class Main {
 
     public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
 
-        //Sound
-        File victorySong = new File("/Users/codecadet/workspace/Java/Pokemon/resources/victoryTheme.wav");
-        File file = new File(("/Users/codecadet/workspace/Java/Pokemon/resources/background music.wav"));
-
-        AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
-        Clip clip = AudioSystem.getClip();
-        clip.open(audioStream);
-
-        clip.start();
-        clip.loop(2);
+//        //Sound
+//        File victorySong = new File("resources/victoryRoyale.wav");
+//        File file = new File(("resources/background music.wav"));
+//        File start = new File (("resources/startSelector.wav"));
+//
+//        AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+//        Clip clip = AudioSystem.getClip();
+//        clip.open(audioStream);
+//
+//        clip.start();
+//        clip.loop(2);
 
         //Images
         Picture startScreen = new Picture(10,10,"resources/StartScreen.png");

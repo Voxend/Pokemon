@@ -17,10 +17,19 @@ public class MyKeyboardHandle implements KeyboardHandler {
     private Game game;
     private Pokemon p1;
     private Pokemon p2;
+    private boolean chosingscreendelet = false;
 
     public void init() {
 
         keyboard = new Keyboard(this);
+
+
+        //System
+
+        KeyboardEvent enter = new KeyboardEvent();
+        enter.setKey(KeyboardEvent.KEY_ENTER);
+        enter.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener((enter));
 
         //P1
 
@@ -101,7 +110,8 @@ public class MyKeyboardHandle implements KeyboardHandler {
                 game.setStarted(true);
             }
         } else {
-            //p1
+
+
             if (!game.isP1Choosed()) {
 
                 if (e.getKey() == KeyboardEvent.KEY_1) {
@@ -126,101 +136,112 @@ public class MyKeyboardHandle implements KeyboardHandler {
                     game.drawEliasmonFront();
                 }
 
-            } else if(game.isP1Choosed() && !game.isP2Choosed()){
+            } else if (game.isP1Choosed() && !game.isP2Choosed()) {
                 if (e.getKey() == KeyboardEvent.KEY_1) {
                     game.setP2(new Charizard());
                     game.setP2Choosed(true);
                     game.drawCharizardBack();
-                    game.getChoosingScreen().delete();
+
                 }
                 if (e.getKey() == KeyboardEvent.KEY_2) {
                     game.setP2(new Dragonite());
                     game.setP2Choosed(true);
                     game.drawDraganiteBack();
-                    game.getChoosingScreen().delete();
 
                 }
+
                 if (e.getKey() == KeyboardEvent.KEY_3) {
-                    delayMethod(2000);
                     game.setP2(new Gyarados());
                     game.setP2Choosed(true);
                     game.drawGyaradosBack();
-                    game.getChoosingScreen().delete();
                 }
+
                 if (e.getKey() == KeyboardEvent.KEY_4) {
-                    delayMethod(2000);
                     game.setP2(new Eliasmon());
                     game.setP2Choosed(true);
                     game.drawEliasmonBack();
-                    game.getChoosingScreen().delete();
 
                 }
+
+
             } else if (game.isP1Choosed() && game.isP2Choosed()) {
-
-                if ((game.isP1Turn() && !game.getP1().getDead())) {
-                    if (e.getKey() == KeyboardEvent.KEY_M) {
-
-
-                        soundFX();
-                        game.p1Attack1();
-                        game.setP1Turn(false);
-                        game.setP2Turn(true);
-                    }
-
-                    if (e.getKey() == KeyboardEvent.KEY_N) {
-                        soundFX();
-                        game.p1Attack2();
-                        game.setP1Turn(false);
-                        game.setP2Turn(true);
-                    }
-
-                    if (e.getKey() == KeyboardEvent.KEY_B) {
-                        soundFX();
-                        game.p1Attack3();
-                        game.setP1Turn(false);
-                        game.setP2Turn(true);
-                    }
-
-                    if (e.getKey() == KeyboardEvent.KEY_V) {
-                        soundFX();
-                        game.p1Attack4();
-                        game.setP1Turn(false);
-                        game.setP2Turn(true);
-                    }
-
-
-                }
-                if (game.isP2Turn() && !game.getP2().getDead()) {
-                    if (e.getKey() == KeyboardEvent.KEY_Q) {
-                        soundFX();
-                        game.p2Attack1();
-                        game.setP1Turn(true);
-                        game.setP2Turn(false);
+                if (!chosingscreendelet) {
+                    if (e.getKey() == KeyboardEvent.KEY_ENTER) {
+                        game.getStartingSong().stop();
+                        game.getBattleSong().start();
+                        game.getBattleSong().loop(2);
+                        chosingscreendelet = true;
+                        game.getChoosingScreen().delete();
 
                     }
+                } else {
 
-                    if (e.getKey() == KeyboardEvent.KEY_W) {
-                        soundFX();
-                        game.p2Attack2();
-                        game.setP1Turn(true);
-                        game.setP2Turn(false);
+
+                    if ((game.isP1Turn() && !game.getP1().getDead())) {
+                        if (e.getKey() == KeyboardEvent.KEY_M) {
+
+
+                            soundFX();
+                            game.p1Attack1();
+                            game.setP1Turn(false);
+                            game.setP2Turn(true);
+                        }
+
+                        if (e.getKey() == KeyboardEvent.KEY_N) {
+                            soundFX();
+                            game.p1Attack2();
+                            game.setP1Turn(false);
+                            game.setP2Turn(true);
+                        }
+
+                        if (e.getKey() == KeyboardEvent.KEY_B) {
+                            soundFX();
+                            game.p1Attack3();
+                            game.setP1Turn(false);
+                            game.setP2Turn(true);
+                        }
+
+                        if (e.getKey() == KeyboardEvent.KEY_V) {
+                            soundFX();
+                            game.p1Attack4();
+                            game.setP1Turn(false);
+                            game.setP2Turn(true);
+                        }
+
 
                     }
+                    if (game.isP2Turn() && !game.getP2().getDead()) {
+                        if (e.getKey() == KeyboardEvent.KEY_Q) {
+                            soundFX();
+                            game.p2Attack1();
+                            game.setP1Turn(true);
+                            game.setP2Turn(false);
 
-                    if (e.getKey() == KeyboardEvent.KEY_E) {
-                        soundFX();
-                        game.p2Attack3();
-                        game.setP1Turn(true);
-                        game.setP2Turn(false);
+                        }
 
-                    }
+                        if (e.getKey() == KeyboardEvent.KEY_W) {
+                            soundFX();
+                            game.p2Attack2();
+                            game.setP1Turn(true);
+                            game.setP2Turn(false);
 
-                    if (e.getKey() == KeyboardEvent.KEY_R) {
-                        soundFX();
-                        game.p2Attack4();
-                        game.setP1Turn(true);
-                        game.setP2Turn(false);
+                        }
 
+                        if (e.getKey() == KeyboardEvent.KEY_E) {
+                            soundFX();
+                            game.p2Attack3();
+                            game.setP1Turn(true);
+                            game.setP2Turn(false);
+
+                        }
+
+                        if (e.getKey() == KeyboardEvent.KEY_R) {
+                            soundFX();
+                            game.p2Attack4();
+                            game.setP1Turn(true);
+                            game.setP2Turn(false);
+
+                        }
                     }
                 }
             }

@@ -14,19 +14,24 @@ public class Dragonite extends Pokemon {
     private String attack3Name;
     private String attack4Name;
 
+    private Picture sprite;
+
+    private String name = "Dragonite";
+
     private boolean currentTurn = true;
 
     public Dragonite(){
+        sprite =  new Picture(450,100,"resources/dragonite_front.png");
 
         this.attack1 = 120;
         this.attack2 = 85;
-        this.attack3 = 55;
-        this.attack4 = 40;
+        this.attack3 = 70;
+        this.attack4 = 90;
 
         this.attack1Name = "Outrage";
-        this.attack2Name = "Dragon claw";
-        this.attack3Name = "Dragon Breath";
-        this.attack4Name = "Twister";
+        this.attack2Name = "Dragon Claw";
+        this.attack3Name = "Wing Attack";
+        this.attack4Name = "Slam";
 
     }
 
@@ -107,6 +112,11 @@ public class Dragonite extends Pokemon {
 
     public String getAttack4Name() {
         return attack4Name;
+    }
+
+    @Override
+    public Picture getSprite() {
+        return sprite;
     }
 
     @Override

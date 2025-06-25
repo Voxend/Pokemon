@@ -1,5 +1,7 @@
 package io.codeforall.bootcamp.pokemon;
 
+import org.academiadecodigo.simplegraphics.pictures.Picture;
+
 public class Eliasmon extends Pokemon{
 
     private int attack1;
@@ -12,19 +14,24 @@ public class Eliasmon extends Pokemon{
     private String attack3Name;
     private String attack4Name;
 
+    private String name = "Eliasmon";
+    private Picture sprite;
+
     private boolean currentTurn = true;
 
     public Eliasmon(){
 
-        this.attack1 = 120;
-        this.attack2 = 85;
-        this.attack3 = 55;
-        this.attack4 = 40;
+        sprite = new Picture(450,130,"resources/eliasmon front.png");
 
-        this.attack1Name = "Outrage";
-        this.attack2Name = "Dragon claw";
-        this.attack3Name = "Dragon Breath";
-        this.attack4Name = "Twister";
+        this.attack1 = 300;
+        this.attack2 = 250;
+        this.attack3 = 450;
+        this.attack4 = 90;
+
+        this.attack1Name = "Banana Punch";
+        this.attack2Name = "Leg Day Strike";
+        this.attack3Name = "Protein Throw";
+        this.attack4Name = "Banana Split";
 
     }
 
@@ -103,6 +110,11 @@ public class Eliasmon extends Pokemon{
 
     public String getAttack4Name() {
         return attack4Name;
+    }
+
+    @Override
+    public Picture getSprite() {
+        return sprite;
     }
 
     @Override

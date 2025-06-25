@@ -1,5 +1,7 @@
 package io.codeforall.bootcamp.pokemon;
 
+import org.academiadecodigo.simplegraphics.pictures.Picture;
+
 public class Gyarados extends Pokemon{
     private int attack1;
     private int attack2;
@@ -11,19 +13,24 @@ public class Gyarados extends Pokemon{
     private String attack3Name;
     private String attack4Name;
 
+    private String name = "Gyarados";
+    private Picture sprite;
+
     private boolean currentTurn = true;
 
     public Gyarados(){
 
-        this.attack1 = 120;
-        this.attack2 = 85;
-        this.attack3 = 55;
-        this.attack4 = 40;
+        sprite =  new Picture(450,210,"resources/gyarados_front.png");
 
-        this.attack1Name = "Outrage";
-        this.attack2Name = "Dragon claw";
-        this.attack3Name = "Dragon Breath";
-        this.attack4Name = "Twister";
+        this.attack1 = 90;
+        this.attack2 = 85;
+        this.attack3 = 100;
+        this.attack4 = 450;
+
+        this.attack1Name = "Waterfall";
+        this.attack2Name = "Crunch";
+        this.attack3Name = "Bounce";
+        this.attack4Name = "Hyper Beam";
 
     }
 
@@ -105,6 +112,11 @@ public class Gyarados extends Pokemon{
 
     public String getAttack4Name() {
         return attack4Name;
+    }
+
+    @Override
+    public Picture getSprite() {
+        return sprite;
     }
 
     @Override
