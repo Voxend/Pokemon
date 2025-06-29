@@ -9,19 +9,7 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Main {
 
-    public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
-
-//        //Sound
-//        File victorySong = new File("resources/victoryRoyale.wav");
-//        File file = new File(("resources/background music.wav"));
-//        File start = new File (("resources/startSelector.wav"));
-//
-//        AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
-//        Clip clip = AudioSystem.getClip();
-//        clip.open(audioStream);
-//
-//        clip.start();
-//        clip.loop(2);
+    public static void main(String[] args){
 
         //Images
         Picture startScreen = new Picture(10,10,"resources/StartScreen.png");
@@ -36,7 +24,7 @@ public class Main {
 
         Game game1= new Game();
 
-        game1.init();
+
         startScreen.draw();
         keyboardHandle.setGame(game1);
         keyboardHandle.setP1(game1.getP1());

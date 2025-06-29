@@ -106,6 +106,15 @@ public class MyKeyboardHandle implements KeyboardHandler {
         if (!game.isStarted()) {
             if (e.getKey() == KeyboardEvent.KEY_SPACE) {
                 startScreen.delete();
+                try {
+                    game.init();
+                } catch (LineUnavailableException ex) {
+                    throw new RuntimeException(ex);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                } catch (UnsupportedAudioFileException ex) {
+                    throw new RuntimeException(ex);
+                }
 
                 game.setStarted(true);
             }
@@ -167,9 +176,9 @@ public class MyKeyboardHandle implements KeyboardHandler {
             } else if (game.isP1Choosed() && game.isP2Choosed()) {
                 if (!chosingscreendelet) {
                     if (e.getKey() == KeyboardEvent.KEY_ENTER) {
-                        game.getStartingSong().stop();
-                        game.getBattleSong().start();
-                        game.getBattleSong().loop(2);
+                        game.stopStartSong();
+                        game.battleSong();
+
                         chosingscreendelet = true;
                         game.getChoosingScreen().delete();
 
@@ -180,29 +189,28 @@ public class MyKeyboardHandle implements KeyboardHandler {
                     if ((game.isP1Turn() && !game.getP1().getDead())) {
                         if (e.getKey() == KeyboardEvent.KEY_M) {
 
-
-                            soundFX();
+                            game.hitSound();
                             game.p1Attack1();
                             game.setP1Turn(false);
                             game.setP2Turn(true);
                         }
 
                         if (e.getKey() == KeyboardEvent.KEY_N) {
-                            soundFX();
+                            game.hitSound();
                             game.p1Attack2();
                             game.setP1Turn(false);
                             game.setP2Turn(true);
                         }
 
                         if (e.getKey() == KeyboardEvent.KEY_B) {
-                            soundFX();
+                            game.hitSound();
                             game.p1Attack3();
                             game.setP1Turn(false);
                             game.setP2Turn(true);
                         }
 
                         if (e.getKey() == KeyboardEvent.KEY_V) {
-                            soundFX();
+                            game.hitSound();
                             game.p1Attack4();
                             game.setP1Turn(false);
                             game.setP2Turn(true);
@@ -212,7 +220,7 @@ public class MyKeyboardHandle implements KeyboardHandler {
                     }
                     if (game.isP2Turn() && !game.getP2().getDead()) {
                         if (e.getKey() == KeyboardEvent.KEY_Q) {
-                            soundFX();
+                            game.hitSound();
                             game.p2Attack1();
                             game.setP1Turn(true);
                             game.setP2Turn(false);
@@ -220,7 +228,7 @@ public class MyKeyboardHandle implements KeyboardHandler {
                         }
 
                         if (e.getKey() == KeyboardEvent.KEY_W) {
-                            soundFX();
+                            game.hitSound();
                             game.p2Attack2();
                             game.setP1Turn(true);
                             game.setP2Turn(false);
@@ -228,7 +236,7 @@ public class MyKeyboardHandle implements KeyboardHandler {
                         }
 
                         if (e.getKey() == KeyboardEvent.KEY_E) {
-                            soundFX();
+                            game.hitSound();
                             game.p2Attack3();
                             game.setP1Turn(true);
                             game.setP2Turn(false);
@@ -236,7 +244,7 @@ public class MyKeyboardHandle implements KeyboardHandler {
                         }
 
                         if (e.getKey() == KeyboardEvent.KEY_R) {
-                            soundFX();
+                            game.hitSound();
                             game.p2Attack4();
                             game.setP1Turn(true);
                             game.setP2Turn(false);
@@ -256,34 +264,34 @@ public class MyKeyboardHandle implements KeyboardHandler {
         this.startScreen = picture;
     }
 
-    private void soundFX() {
-
-        File file = new File(("/Users/codecadet/workspace/Java/Pokemon/resources/hit.wav"));
-        AudioInputStream audioStream = null;
-        try {
-            audioStream = AudioSystem.getAudioInputStream(file);
-        } catch (UnsupportedAudioFileException ex) {
-            throw new RuntimeException(ex);
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
-        }
-        Clip clip = null;
-        try {
-            clip = AudioSystem.getClip();
-        } catch (LineUnavailableException ex) {
-            throw new RuntimeException(ex);
-        }
-        try {
-            clip.open(audioStream);
-        } catch (LineUnavailableException ex) {
-            throw new RuntimeException(ex);
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
-        }
-
-        clip.start();
-
-    }
+//    private void //soundFX() {
+//
+//        File file = new File(("/resources/hit.wav"));
+//        AudioInputStream audioStream = null;
+//        try {
+//            audioStream = AudioSystem.getAudioInputStream(file);
+//        } catch (UnsupportedAudioFileException ex) {
+//            throw new RuntimeException(ex);
+//        } catch (IOException ex) {
+//            throw new RuntimeException(ex);
+//        }
+//        Clip clip = null;
+//        try {
+//            clip = AudioSystem.getClip();
+//        } catch (LineUnavailableException ex) {
+//            throw new RuntimeException(ex);
+//        }
+//        try {
+//            clip.open(audioStream);
+//        } catch (LineUnavailableException ex) {
+//            throw new RuntimeException(ex);
+//        } catch (IOException ex) {
+//            throw new RuntimeException(ex);
+//        }
+//
+//        clip.start();
+//
+//    }
 
     public void setGame(Game game) {
         this.game = game;

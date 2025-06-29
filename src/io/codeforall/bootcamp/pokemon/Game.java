@@ -1,12 +1,13 @@
 package io.codeforall.bootcamp.pokemon;
 
+import org.academiadecodigo.bootcamp.Sound;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 import java.io.IOException;
 import javax.sound.sampled.*;
-import java.io.File;
+
 
 public class Game {
 
@@ -25,16 +26,15 @@ public class Game {
     private Rectangle p2Hpbar;
     private Text currentHPp1;
     private Text currentHPp2;
-    private Picture choosingScreen = new Picture(10, 10, "resources/P1.png");
+    private Picture choosingScreen = new Picture(10, 10, "resources/Press ENTER to start!.png");
 
     //Sound
 
-    private File victorySong = new File("resources/victoryRoyale.wav");
-    private File file = new File(("resources/background music.wav"));
-    private File startSong = new File (("resources/startSelector.wav"));
-    private Clip startingSong;
-    private Clip battleSong;
-    private Clip victorySonge;
+    Sound init = new Sound("/resources/startSelector.wav");
+    Sound battle = new Sound("/resources/background music.wav");
+    Sound hit = new Sound("/resources/hit.wav");
+    Sound victory = new Sound("/resources/victoryRoyale.wav");
+
 
 
 
@@ -47,27 +47,13 @@ public class Game {
         this.attackText = new Text(310, 470,"What will Player1 do?");
 
     }
-//    Picture startScreen = new Picture(10,10,"resources/StartScreen.png");
+
 
 
     public void init() throws LineUnavailableException, IOException, UnsupportedAudioFileException {
 
+            init.play(true);
 
-
-        AudioInputStream audioStream = AudioSystem.getAudioInputStream(startSong);
-        startingSong = AudioSystem.getClip();
-        startingSong.open(audioStream);
-
-        AudioInputStream audioStream1 = AudioSystem.getAudioInputStream(file);
-        battleSong = AudioSystem.getClip();
-        battleSong.open(audioStream1);
-
-        AudioInputStream audioStream2 = AudioSystem.getAudioInputStream(victorySong);
-        victorySonge = AudioSystem.getClip();
-        victorySonge.open(audioStream2);
-
-        startingSong.start();
-        startingSong.loop(2);
 
         //p1
         Rectangle dragoniteHPbg = new Rectangle(630 , 484 , 500/1.75 , 38);
@@ -126,8 +112,6 @@ public class Game {
 
         choosingScreen.draw();
 
-
-
     }
 
     public void p1Attack1(){
@@ -135,237 +119,315 @@ public class Game {
         if(p2.currentHP <= 0){
             p2.isDead();
             currentHPp2.setText("000");
-            battleSong.stop();
-            victorySonge.start();
-            victorySonge.loop(2);
+            victorySong();
 
-
-            Picture winningScreen = new Picture(10,10, "resources/Winner Winner Chicken Dinner.png");
+            Picture winningScreen = new Picture(10,10, "resources/WinnerWinnerChickenDinner.png");
             winningScreen.draw();
             p1.getSprite().draw();
 
+
         }
+
         p2Hpbar.grow(-p1.getAttack1()/3.5,0);
         p2Hpbar.translate(-p1.getAttack1()/3.5,0);
+
         if (p2.currentHP>0) {
             currentHPp2.setText("" + (p2.currentHP));
         }
+
         if (p2.currentHP<100 && p2.currentHP>0) {
             currentHPp2.setText("0" + (p2.currentHP));
         }
+
         attackText.setText("" + p1 + " used " + p1.getAttack1Name());
     }
 
-    public void p1Attack2(){
+    public void p1Attack2() {
+
         p1.attack2(p2);
+
         if(p2.currentHP <= 0){
             p2.isDead();
             currentHPp2.setText("000");
-            battleSong.stop();
-            victorySonge.start();
-            victorySonge.loop(2);
+            victorySong();
 
-            Picture winningScreen = new Picture(10,10, "resources/Winner Winner Chicken Dinner.png");
+            Picture winningScreen = new Picture(10,10, "resources/WinnerWinnerChickenDinner.png");
             winningScreen.draw();
 
+
             p1.getSprite().draw();
+
         }
+
         p2Hpbar.grow(-p1.getAttack2()/3.5,0);
         p2Hpbar.translate(-p1.getAttack2()/3.5,0);
+
         if (p2.currentHP>0) {
             currentHPp2.setText("" + (p2.currentHP));
         }
+
         if (p2.currentHP<100 && p2.currentHP>0) {
             currentHPp2.setText("0" + (p2.currentHP));
         }
+
         attackText.setText("" + p1 + " used " + p1.getAttack2Name());
     }
 
-    public void p1Attack3(){
+    public void p1Attack3() {
+
         p1.attack3(p2);
+
         if(p2.currentHP <= 0){
+
             p2.isDead();
             currentHPp2.setText("000");
-            battleSong.stop();
-            victorySonge.start();
-            victorySonge.loop(2);
+            victorySong();
 
-            Picture winningScreen = new Picture(10,10, "resources/Winner Winner Chicken Dinner.png");
+            Picture winningScreen = new Picture(10,10, "resources/WinnerWinnerChickenDinner.png");
             winningScreen.draw();
             p1.getSprite().draw();
+
         }
+
         p2Hpbar.grow(-p1.getAttack3()/3.5,0);
         p2Hpbar.translate(-p1.getAttack3()/3.5,0);
+
         if (p2.currentHP>0) {
             currentHPp2.setText("" + (p2.currentHP));
         }
+
         if (p2.currentHP<100 && p2.currentHP>0) {
             currentHPp2.setText("0" + (p2.currentHP));
         }
+
         attackText.setText("" + p1 + " used " + p1.getAttack3Name());
+
     }
 
     public void p1Attack4(){
+
         p1.attack4(p2);
+
         if(p2.currentHP <= 0){
+
             p2.isDead();
             currentHPp2.setText("000");
-            battleSong.stop();
-            victorySonge.start();
-            victorySonge.loop(2);
+            victorySong();;
 
-            Picture winningScreen = new Picture(10,10, "resources/Winner Winner Chicken Dinner.png");
+            Picture winningScreen = new Picture(10,10, "resources/WinnerWinnerChickenDinner.png");
             winningScreen.draw();
             p1.getSprite().draw();
         }
+
         p2Hpbar.grow(-p1.getAttack4()/3.5,0);
         p2Hpbar.translate(-p1.getAttack4()/3.5,0);
+
         if (p2.currentHP>0) {
             currentHPp2.setText("" + (p2.currentHP));
         }
+
         if (p2.currentHP<100 && p2.currentHP>0) {
             currentHPp2.setText("0" + (p2.currentHP));
         }
+
         attackText.setText("" + p1 + " used " + p1.getAttack4Name());
+
     }
 
-    public void p2Attack1(){
+    public void p2Attack1() {
+
         p2.attack1(p1);
-        if(p1.currentHP <= 0){
+
+        if(p1.currentHP <= 0) {
+
             p1.isDead();
             currentHPp1.setText("000");
-            battleSong.stop();
-            victorySonge.start();
-            victorySonge.loop(2);
+            victorySong();
 
-            Picture winningScreen = new Picture(10,10, "resources/Winner Winner Chicken Dinner.png");
+            Picture winningScreen = new Picture(10,10, "resources/WinnerWinnerChickenDinner.png");
             winningScreen.draw();
             p2.getSprite().draw();
         }
+
         p1Hpbar.grow(-p2.getAttack1()/3.5,0);
         p1Hpbar.translate(p2.getAttack1()/3.5,0);
+
         if (p1.currentHP>0) {
             currentHPp1.setText("" + (p1.currentHP));
         }
+
         if (p1.currentHP<100 && p1.currentHP>0) {
             currentHPp1.setText("0" + (p1.currentHP));
         }
+
         attackText.setText("" + p2 + " used " + p2.getAttack1Name());
+
     }
 
-    public void p2Attack2(){
+    public void p2Attack2() {
+
         p2.attack2(p1);
+
         if(p1.currentHP <= 0){
+
             p1.isDead();
             currentHPp1.setText("000");
-            battleSong.stop();
-            victorySonge.start();
-            victorySonge.loop(2);
+            victorySong();
 
-            Picture winningScreen = new Picture(10,10, "resources/Winner Winner Chicken Dinner.png");
+            Picture winningScreen = new Picture(10,10, "resources/WinnerWinnerChickenDinner.png");
             winningScreen.draw();
             p2.getSprite().draw();
         }
+
         p1Hpbar.grow(-p2.getAttack2()/3.5,0);
         p1Hpbar.translate(p2.getAttack2()/3.5,0);
+
         if (p1.currentHP>0) {
             currentHPp1.setText("" + (p1.currentHP));
         }
+
         if (p1.currentHP<100 && p1.currentHP>0) {
             currentHPp1.setText("0" + (p1.currentHP));
         }
+
         attackText.setText("" + p2 + " used " + p2.getAttack2Name());
+
     }
 
-    public void p2Attack3(){
+    public void p2Attack3() {
+
         p2.attack3(p1);
-        if(p1.currentHP <= 0){
+
+        if(p1.currentHP <= 0) {
+
             p1.isDead();
             currentHPp1.setText("000");
-            battleSong.stop();
-            victorySonge.start();
-            victorySonge.loop(2);
+            victorySong();
 
-            Picture winningScreen = new Picture(10,10, "resources/Winner Winner Chicken Dinner.png");
+            Picture winningScreen = new Picture(10,10, "resources/WinnerWinnerChickenDinner.png");
             winningScreen.draw();
             p2.getSprite().draw();
         }
+
         p1Hpbar.grow(-p2.getAttack3()/3.5,0);
         p1Hpbar.translate(p2.getAttack3()/3.5,0);
+
         if (p1.currentHP>0) {
             currentHPp1.setText("" + (p1.currentHP));
         }
+
         if (p1.currentHP<100 && p1.currentHP>0) {
             currentHPp1.setText("0" + (p1.currentHP));
         }
+
         attackText.setText("" + p2 + " used " + p2.getAttack3Name());
+
     }
 
-    public void p2Attack4(){
+    public void p2Attack4() {
+
         p2.attack4(p1);
-        if(p1.currentHP <= 0){
+
+        if(p1.currentHP <= 0) {
+
             p1.isDead();
+
             currentHPp1.setText("000");
-            battleSong.stop();
-            victorySonge.start();
-            victorySonge.loop(2);
-            Picture winningScreen = new Picture(540,1050, "resources/Winner Winner Chicken Dinner.png");
+            victorySong();
+            Picture winningScreen = new Picture(10,10, "resources/WinnerWinnerChickenDinner.png");
             winningScreen.draw();
             p2.getSprite().draw();
         }
+
         p1Hpbar.grow(-p2.getAttack4()/3.5,0);
         p1Hpbar.translate(p2.getAttack4()/3.5,0);
+
         if (p1.currentHP>0) {
             currentHPp1.setText("" + (p1.currentHP));
         }
+
         if (p1.currentHP<100 && p1.currentHP>0) {
             currentHPp1.setText("0" + (p1.currentHP));
         }
+
         attackText.setText("" + p2 + " used " + p2.getAttack4Name());
+
     }
 
     public void drawDraganiteFront(){
         Picture p1Sprite = new Picture(100,100,"resources/dragonite_back.png");
         p1Sprite.draw();
+        Picture p1Attacks = new Picture(10, 10, "resources/attacks/DragoniteP1.png");
+        p1Attacks.draw();
     }
 
     public void drawCharizardFront(){
         Picture p1Sprite = new Picture(100,100,"resources/charizard_back_gif.png");
         p1Sprite.draw();
+        Picture p1Attacks = new Picture(10, 10, "resources/attacks/CharizardP1.png");
+        p1Attacks.draw();
     }
 
     public void drawGyaradosFront(){
         Picture p1Sprite = new Picture(100,100,"resources/gyarados_back.png");
         p1Sprite.draw();
+        Picture p1Attacks = new Picture(10, 10, "resources/attacks/GyaradosP1.png");
+        p1Attacks.draw();
     }
 
     public void drawEliasmonFront(){
-        Picture p1Sprite = new Picture(250,110,"resources/Eliasmon back.png");
+        Picture p1Sprite = new Picture(250,110,"resources/eliasmonBack.png");
         p1Sprite.draw();
+        Picture p1Attacks = new Picture(10, 10, "resources/attacks/EliasP1.png");
+        p1Attacks.draw();
     }
 
     public void drawDraganiteBack(){
         Picture p2Sprite = new Picture(600,40,"resources/dragonite_front.png");
         p2Sprite.draw();
+        Picture p2Attacks = new Picture(10, 10, "resources/attacks/DragoniteP2.png");
+        p2Attacks.draw();
     }
 
     public void drawCharizardBack(){
         Picture p2Sprite = new Picture(600,30,"resources/charizard_front.png");
         p2Sprite.draw();
+        Picture p2Attacks = new Picture(10, 10, "resources/attacks/CharizardP2.png");
+        p2Attacks.draw();
     }
 
     public void drawGyaradosBack(){
         Picture p2Sprite = new Picture(600,40,"resources/gyarados_front.png");
-        p2Sprite.draw();
+        p2Sprite.draw(); Picture p2Attacks = new Picture(10, 10, "resources/attacks/GyaradosP2.png");
+        p2Attacks.draw();
     }
 
     public void drawEliasmonBack(){
-        Picture p2Sprite = new Picture(600,40,"resources/Eliasmon front.png");
+        Picture p2Sprite = new Picture(600,40,"resources/eliasmonFront.png");
         p2Sprite.draw();
+        Picture p2Attacks = new Picture(10, 10, "resources/attacks/EliasP2.png");
+        p2Attacks.draw();
+    }
+
+    public void battleSong(){
+        battle.play(true);
+    }
+
+    public void stopStartSong(){
+        init.stop();
     }
 
     public void setStarted(boolean started) {
         isStarted = started;
+    }
+
+    public void hitSound(){
+        hit.play(true);
+    }
+
+    public void victorySong(){
+        battle.stop();
+        victory.play(true);
     }
 
     public boolean isStarted(){
@@ -428,15 +490,11 @@ public class Game {
         return choosingScreen;
     }
 
-    public Clip getStartingSong() {
-        return startingSong;
+    public Sound getBattle() {
+        return battle;
     }
 
-    public Clip getBattleSong() {
-        return battleSong;
-    }
-
-    public Clip getVictorySonge() {
-        return victorySonge;
+    public Sound getInit() {
+        return init;
     }
 }

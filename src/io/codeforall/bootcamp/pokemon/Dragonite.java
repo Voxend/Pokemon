@@ -21,7 +21,7 @@ public class Dragonite extends Pokemon {
     private boolean currentTurn = true;
 
     public Dragonite(){
-        sprite =  new Picture(450,100,"resources/dragonite_front.png");
+        sprite =  new Picture(450,150,"resources/dragonite_front.png");
 
         this.attack1 = 120;
         this.attack2 = 85;

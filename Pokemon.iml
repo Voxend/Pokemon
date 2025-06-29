@@ -20,5 +20,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="simple-graphics-0.2.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="soundSafe" level="project" />
   </component>
 </module>

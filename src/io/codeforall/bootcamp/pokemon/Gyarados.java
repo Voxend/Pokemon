@@ -25,7 +25,7 @@ public class Gyarados extends Pokemon{
         this.attack1 = 90;
         this.attack2 = 85;
         this.attack3 = 100;
-        this.attack4 = 450;
+        this.attack4 = 150;
 
         this.attack1Name = "Waterfall";
         this.attack2Name = "Crunch";

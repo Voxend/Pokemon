@@ -22,7 +22,7 @@ public class Charizard extends Pokemon{
 
     public Charizard() {
 
-        sprite =  new Picture(450,100,"resources/charizard_front.png");
+        sprite =  new Picture(450,140,"resources/charizard_front.png");
 
         this.attack1 = 80;
         this.attack2 = 70;
@@ -80,10 +80,6 @@ public class Charizard extends Pokemon{
     public void setCurrentTurn(boolean turn){
         this.currentTurn = turn;
     }
-
-//    public int getSurf() {
-//        return surf;
-//    }
 
     @Override
     public void setHpBar(Rectangle hpBar) {

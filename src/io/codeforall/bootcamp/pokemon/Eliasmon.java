@@ -21,12 +21,12 @@ public class Eliasmon extends Pokemon{
 
     public Eliasmon(){
 
-        sprite = new Picture(450,130,"resources/eliasmon front.png");
+        sprite = new Picture(450,150,"resources/eliasmonFront.png");
 
-        this.attack1 = 300;
-        this.attack2 = 250;
-        this.attack3 = 450;
-        this.attack4 = 90;
+        this.attack1 = 120;
+        this.attack2 = 150;
+        this.attack3 = 200;
+        this.attack4 = 100;
 
         this.attack1Name = "Banana Punch";
         this.attack2Name = "Leg Day Strike";
