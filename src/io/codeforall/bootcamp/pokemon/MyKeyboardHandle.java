@@ -264,34 +264,7 @@ public class MyKeyboardHandle implements KeyboardHandler {
         this.startScreen = picture;
     }
 
-//    private void //soundFX() {
-//
-//        File file = new File(("/resources/hit.wav"));
-//        AudioInputStream audioStream = null;
-//        try {
-//            audioStream = AudioSystem.getAudioInputStream(file);
-//        } catch (UnsupportedAudioFileException ex) {
-//            throw new RuntimeException(ex);
-//        } catch (IOException ex) {
-//            throw new RuntimeException(ex);
-//        }
-//        Clip clip = null;
-//        try {
-//            clip = AudioSystem.getClip();
-//        } catch (LineUnavailableException ex) {
-//            throw new RuntimeException(ex);
-//        }
-//        try {
-//            clip.open(audioStream);
-//        } catch (LineUnavailableException ex) {
-//            throw new RuntimeException(ex);
-//        } catch (IOException ex) {
-//            throw new RuntimeException(ex);
-//        }
-//
-//        clip.start();
-//
-//    }
+
 
     public void setGame(Game game) {
         this.game = game;
