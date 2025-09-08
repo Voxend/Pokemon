@@ -278,12 +278,5 @@ public class MyKeyboardHandle implements KeyboardHandler {
         this.p2 = p2;
     }
 
-    private void delayMethod(int ms) {
 
-        try {
-            Thread.sleep(ms);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
 }

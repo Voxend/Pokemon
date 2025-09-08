@@ -102,8 +102,4 @@ public abstract class Pokemon {
     public String getAttack4Name() {
         return attack4Name;
     }
-
-    public String getName() {
-        return name;
-    }
 }
