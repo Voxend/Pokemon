@@ -14,7 +14,7 @@ public class Main {
 
         Picture startScreen = new Picture(10,10,"resources/StartScreen.png");
 
-
+        // Keyboard Handler
         MyKeyboardHandle keyboardHandle = new MyKeyboardHandle();
         keyboardHandle.init();
 
@@ -29,6 +29,7 @@ public class Main {
         keyboardHandle.setGame(game1);
         keyboardHandle.setP1(game1.getP1());
         keyboardHandle.setP2(game1.getP2());
+
 
     }
 }
