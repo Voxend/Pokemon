@@ -11,14 +11,14 @@ public class Main {
 
     public static void main(String[] args){
 
-        //Images
+
         Picture startScreen = new Picture(10,10,"resources/StartScreen.png");
 
-        //Keyboard Functionality
+
         MyKeyboardHandle keyboardHandle = new MyKeyboardHandle();
         keyboardHandle.init();
 
-        //Pokémon Game Start
+
 
         keyboardHandle.setStartScreen(startScreen);
 
